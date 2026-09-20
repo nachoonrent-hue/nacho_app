@@ -40,12 +40,14 @@ class _VideoPlayerModalState extends State<VideoPlayerModal> {
                   height: double.infinity,
                   errorBuilder: (context, error, stackTrace) => Container(
                     color: Colors.black,
-                    child: const Icon(Icons.movie_rounded, color: Colors.white, size: 80),
+                    child: const Icon(
+                      Icons.movie_rounded,
+                      color: Colors.white,
+                      size: 80,
+                    ),
                   ),
                 ),
-                Container(
-                  color: Colors.black.withValues(alpha: 0.35),
-                ),
+                Container(color: Colors.black.withValues(alpha: 0.35)),
                 if (!_isPlaying)
                   Container(
                     padding: const EdgeInsets.all(16),
@@ -53,7 +55,11 @@ class _VideoPlayerModalState extends State<VideoPlayerModal> {
                       color: Colors.black.withValues(alpha: 0.6),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.play_arrow_rounded, color: Colors.white, size: 60),
+                    child: const Icon(
+                      Icons.play_arrow_rounded,
+                      color: Colors.white,
+                      size: 60,
+                    ),
                   ),
               ],
             ),
@@ -68,26 +74,46 @@ class _VideoPlayerModalState extends State<VideoPlayerModal> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: const Icon(Icons.close_rounded, color: Colors.white, size: 28),
+                  icon: const Icon(
+                    Icons.close_rounded,
+                    color: Colors.white,
+                    size: 28,
+                  ),
                   onPressed: () => Navigator.pop(context),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.black.withValues(alpha: 0.6),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
                     children: const [
-                      Icon(Icons.fiber_manual_record, color: Colors.red, size: 12),
+                      Icon(
+                        Icons.fiber_manual_record,
+                        color: Colors.red,
+                        size: 12,
+                      ),
                       SizedBox(width: 6),
-                      Text('LIVE PERFORMANCE REEL', style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
+                      Text(
+                        'LIVE PERFORMANCE REEL',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 IconButton(
                   icon: Icon(
-                    _isMuted ? Icons.volume_off_rounded : Icons.volume_up_rounded,
+                    _isMuted
+                        ? Icons.volume_off_rounded
+                        : Icons.volume_up_rounded,
                     color: Colors.white,
                     size: 26,
                   ),
@@ -122,11 +148,18 @@ class _VideoPlayerModalState extends State<VideoPlayerModal> {
                         children: [
                           Text(
                             widget.dancer.name,
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
                           ),
                           Text(
                             '${widget.dancer.location} • ${widget.dancer.danceStyles.join(", ")}',
-                            style: const TextStyle(color: Colors.white70, fontSize: 12),
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 12,
+                            ),
                           ),
                         ],
                       ),
@@ -149,7 +182,8 @@ class _VideoPlayerModalState extends State<VideoPlayerModal> {
                           Navigator.pop(context);
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (_) => BookingRequestScreen(dancer: widget.dancer),
+                              builder: (_) =>
+                                  BookingRequestScreen(dancer: widget.dancer),
                             ),
                           );
                         },
@@ -157,7 +191,9 @@ class _VideoPlayerModalState extends State<VideoPlayerModal> {
                           backgroundColor: AppColors.saffron,
                           padding: const EdgeInsets.symmetric(vertical: 14),
                         ),
-                        child: Text('BOOK NOW (From ₹${widget.dancer.startingPrice.toInt()})'),
+                        child: Text(
+                          'BOOK NOW (From ₹${widget.dancer.startingPrice.toInt()})',
+                        ),
                       ),
                     ),
                   ],

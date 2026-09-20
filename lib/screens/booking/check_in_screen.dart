@@ -36,13 +36,22 @@ class _CheckInScreenState extends State<CheckInScreen> {
                 children: [
                   Text(widget.booking.itemTitle, style: AppTypography.h2),
                   const SizedBox(height: 6),
-                  Text('Scheduled for ${widget.booking.date} (${widget.booking.time})', style: AppTypography.bodySecondary),
+                  Text(
+                    'Scheduled for ${widget.booking.date} (${widget.booking.time})',
+                    style: AppTypography.bodySecondary,
+                  ),
                   const Divider(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Check-In Code Token:'),
-                      Text(widget.booking.qrCode, style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.primaryPlum)),
+                      Text(
+                        widget.booking.qrCode,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryPlum,
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -54,25 +63,42 @@ class _CheckInScreenState extends State<CheckInScreen> {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: _isCheckedIn ? AppColors.emeraldSuccess.withValues(alpha: 0.1) : AppColors.warmIvory,
+                color: _isCheckedIn
+                    ? AppColors.emeraldSuccess.withValues(alpha: 0.1)
+                    : AppColors.warmIvory,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: _isCheckedIn ? AppColors.emeraldSuccess : AppColors.primaryPlum),
+                border: Border.all(
+                  color: _isCheckedIn
+                      ? AppColors.emeraldSuccess
+                      : AppColors.primaryPlum,
+                ),
               ),
               child: Column(
                 children: [
                   Icon(
-                    _isCheckedIn ? Icons.verified_rounded : Icons.qr_code_scanner_rounded,
+                    _isCheckedIn
+                        ? Icons.verified_rounded
+                        : Icons.qr_code_scanner_rounded,
                     size: 64,
-                    color: _isCheckedIn ? AppColors.emeraldSuccess : AppColors.primaryPlum,
+                    color: _isCheckedIn
+                        ? AppColors.emeraldSuccess
+                        : AppColors.primaryPlum,
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    _isCheckedIn ? 'Dancer Attendance Checked-In!' : 'Scan QR Code or Confirm Attendance',
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    _isCheckedIn
+                        ? 'Dancer Attendance Checked-In!'
+                        : 'Scan QR Code or Confirm Attendance',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    _isCheckedIn ? 'Event is now ongoing. Complete event once performance finishes.' : 'Press the button below when the dancer/host arrives at venue.',
+                    _isCheckedIn
+                        ? 'Event is now ongoing. Complete event once performance finishes.'
+                        : 'Press the button below when the dancer/host arrives at venue.',
                     style: AppTypography.small,
                     textAlign: TextAlign.center,
                   ),
@@ -90,7 +116,10 @@ class _CheckInScreenState extends State<CheckInScreen> {
                     setState(() {
                       _isCheckedIn = true;
                     });
-                    context.appState.updateBookingStatus(widget.booking.id, BookingStatus.checkedIn);
+                    context.appState.updateBookingStatus(
+                      widget.booking.id,
+                      BookingStatus.checkedIn,
+                    );
                   },
                   child: const Text('CONFIRM VENUE CHECK-IN'),
                 ),
@@ -100,14 +129,20 @@ class _CheckInScreenState extends State<CheckInScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    context.appState.updateBookingStatus(widget.booking.id, BookingStatus.completed);
+                    context.appState.updateBookingStatus(
+                      widget.booking.id,
+                      BookingStatus.completed,
+                    );
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (_) => CompletionReviewScreen(booking: widget.booking),
+                        builder: (_) =>
+                            CompletionReviewScreen(booking: widget.booking),
                       ),
                     );
                   },
-                  style: ElevatedButton.styleFrom(backgroundColor: AppColors.emeraldSuccess),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.emeraldSuccess,
+                  ),
                   child: const Text('MARK EVENT AS COMPLETED'),
                 ),
               ),
@@ -118,11 +153,15 @@ class _CheckInScreenState extends State<CheckInScreen> {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (_) => DisputeSupportScreen(booking: widget.booking),
+                    builder: (_) =>
+                        DisputeSupportScreen(booking: widget.booking),
                   ),
                 );
               },
-              child: const Text('Report Issue or Dispute Booking', style: TextStyle(color: AppColors.errorRed)),
+              child: const Text(
+                'Report Issue or Dispute Booking',
+                style: TextStyle(color: AppColors.errorRed),
+              ),
             ),
           ],
         ),

@@ -5,7 +5,8 @@ class DancerFilterBottomSheet extends StatefulWidget {
   const DancerFilterBottomSheet({super.key});
 
   @override
-  State<DancerFilterBottomSheet> createState() => _DancerFilterBottomSheetState();
+  State<DancerFilterBottomSheet> createState() =>
+      _DancerFilterBottomSheetState();
 }
 
 class _DancerFilterBottomSheetState extends State<DancerFilterBottomSheet> {
@@ -37,7 +38,10 @@ class _DancerFilterBottomSheetState extends State<DancerFilterBottomSheet> {
             ],
           ),
           const SizedBox(height: 16),
-          const Text('Price Range (per event in ₹)', style: TextStyle(fontWeight: FontWeight.bold)),
+          const Text(
+            'Price Range (per event in ₹)',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           RangeSlider(
             values: _priceRange,
             min: 5000,
@@ -55,7 +59,10 @@ class _DancerFilterBottomSheetState extends State<DancerFilterBottomSheet> {
             },
           ),
           const SizedBox(height: 16),
-          const Text('Minimum Rating', style: TextStyle(fontWeight: FontWeight.bold)),
+          const Text(
+            'Minimum Rating',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           Slider(
             value: _minRating,
             min: 3.0,

@@ -11,8 +11,13 @@ class CreateExperienceFlow extends StatefulWidget {
 }
 
 class _CreateExperienceFlowState extends State<CreateExperienceFlow> {
-  final _titleController = TextEditingController(text: 'Traditional Haldi & Floral Ceremony Pass');
-  final _descriptionController = TextEditingController(text: 'Be an honored guest in an authentic Haldi ceremony with live music, floral rain, and traditional turmeric ritual.');
+  final _titleController = TextEditingController(
+    text: 'Traditional Haldi & Floral Ceremony Pass',
+  );
+  final _descriptionController = TextEditingController(
+    text:
+        'Be an honored guest in an authentic Haldi ceremony with live music, floral rain, and traditional turmeric ritual.',
+  );
   final _locationController = TextEditingController(text: 'Udaipur, Rajasthan');
   final _durationController = TextEditingController(text: '3 Hours');
   final _priceController = TextEditingController(text: '2999');
@@ -40,12 +45,19 @@ class _CreateExperienceFlowState extends State<CreateExperienceFlow> {
           children: [
             const Text('Host a Cultural Experience', style: AppTypography.h1),
             const SizedBox(height: 8),
-            const Text('Share authentic Indian wedding traditions with guest travelers.', style: AppTypography.bodySecondary),
+            const Text(
+              'Share authentic Indian wedding traditions with guest travelers.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             DropdownButtonFormField<String>(
               initialValue: _selectedCategory,
-              decoration: const InputDecoration(labelText: 'Experience Category'),
-              items: _categories.map((c) => DropdownMenuItem(value: c, child: Text(c))).toList(),
+              decoration: const InputDecoration(
+                labelText: 'Experience Category',
+              ),
+              items: _categories
+                  .map((c) => DropdownMenuItem(value: c, child: Text(c)))
+                  .toList(),
               onChanged: (val) {
                 if (val != null) setState(() => _selectedCategory = val);
               },
@@ -74,7 +86,9 @@ class _CreateExperienceFlowState extends State<CreateExperienceFlow> {
                   child: TextField(
                     controller: _priceController,
                     keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(labelText: 'Price / Guest (₹)'),
+                    decoration: const InputDecoration(
+                      labelText: 'Price / Guest (₹)',
+                    ),
                   ),
                 ),
               ],
@@ -83,7 +97,9 @@ class _CreateExperienceFlowState extends State<CreateExperienceFlow> {
             TextField(
               controller: _descriptionController,
               maxLines: 4,
-              decoration: const InputDecoration(labelText: 'Full Experience Description'),
+              decoration: const InputDecoration(
+                labelText: 'Full Experience Description',
+              ),
             ),
             const SizedBox(height: 32),
             SizedBox(
@@ -112,11 +128,18 @@ class _CreateExperienceFlowState extends State<CreateExperienceFlow> {
       hostAvatar: context.appState.currentUser.avatarUrl,
       pricePerGuest: double.tryParse(_priceController.text) ?? 2999.0,
       guestCapacity: 10,
-      includes: ['Ceremony Access Pass', 'Welcome Refreshments', 'Souvenir Photos'],
+      includes: [
+        'Ceremony Access Pass',
+        'Welcome Refreshments',
+        'Souvenir Photos',
+      ],
       excludes: ['Transportation'],
       guestRules: ['Wear festive yellow or ethnic attire'],
-      coverImageUrl: 'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80',
-      galleryUrls: ['https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80'],
+      coverImageUrl:
+          'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80',
+      galleryUrls: [
+        'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80',
+      ],
       rating: 5.0,
       reviewCount: 1,
       availableDates: ['15 Nov 2026', '20 Dec 2026'],

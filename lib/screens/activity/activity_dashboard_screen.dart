@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../models/booking_model.dart';
 import '../../services/app_state_provider.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/animations.dart';
 import '../../widgets/status_badge.dart';
 import '../booking/check_in_screen.dart';
 
@@ -9,10 +10,12 @@ class ActivityDashboardScreen extends StatefulWidget {
   const ActivityDashboardScreen({super.key});
 
   @override
-  State<ActivityDashboardScreen> createState() => _ActivityDashboardScreenState();
+  State<ActivityDashboardScreen> createState() =>
+      _ActivityDashboardScreenState();
 }
 
-class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with SingleTickerProviderStateMixin {
+class _ActivityDashboardScreenState extends State<ActivityDashboardScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -25,7 +28,9 @@ class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with 
   Widget build(BuildContext context) {
     final appState = context.appState;
     final userBookings = appState.bookings;
-    final totalEarnings = userBookings.where((b) => b.isPaid).fold(0.0, (sum, b) => sum + b.totalAmount);
+    final totalEarnings = userBookings
+        .where((b) => b.isPaid)
+        .fold(0.0, (sum, b) => sum + b.totalAmount);
 
     return Scaffold(
       appBar: AppBar(
@@ -35,7 +40,24 @@ class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with 
           isScrollable: true,
           labelColor: AppColors.primaryPlum,
           unselectedLabelColor: AppColors.secondaryText,
-          indicatorColor: AppColors.primaryPlum,
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicatorPadding: const EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 8,
+          ),
+          dividerColor: Colors.transparent,
+          labelStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 13,
+          ),
+          unselectedLabelStyle: const TextStyle(
+            fontWeight: FontWeight.normal,
+            fontSize: 13,
+          ),
+          indicator: BoxDecoration(
+            color: AppColors.primaryPlum.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(12),
+          ),
           tabs: const [
             Tab(text: 'Overview'),
             Tab(text: 'My Events'),
@@ -58,25 +80,38 @@ class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with 
                 Row(
                   children: [
                     Expanded(
-                      child: _MetricCard(
-                        title: 'Total Earnings',
-                        value: '₹${totalEarnings.toInt()}',
-                        color: AppColors.emeraldSuccess,
+                      child: Entrance(
+                        index: 0,
+                        child: _MetricCard(
+                          title: 'Total Earnings',
+                          value: totalEarnings,
+                          prefix: '₹',
+                          color: AppColors.emeraldSuccess,
+                        ),
                       ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: _MetricCard(
-                        title: 'Active Bookings',
-                        value: '${userBookings.length}',
-                        color: AppColors.primaryPlum,
+                      child: Entrance(
+                        index: 1,
+                        child: _MetricCard(
+                          title: 'Active Bookings',
+                          value: userBookings.length.toDouble(),
+                          color: AppColors.primaryPlum,
+                        ),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 24),
 
-                const Text('Recent Booking Activity', style: AppTypography.h2),
+                const Entrance(
+                  index: 2,
+                  child: Text(
+                    'Recent Booking Activity',
+                    style: AppTypography.h2,
+                  ),
+                ),
                 const SizedBox(height: 12),
 
                 if (userBookings.isEmpty)
@@ -91,42 +126,65 @@ class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with 
                     itemCount: userBookings.length,
                     itemBuilder: (context, index) {
                       final booking = userBookings[index];
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 12),
-                        padding: const EdgeInsets.all(14),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(color: AppColors.borderLight),
-                        ),
-                        child: Row(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.network(
-                                booking.itemImageUrl,
-                                width: 50,
-                                height: 50,
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) => Container(
+                      return Entrance(
+                        index: index,
+                        offset: 10,
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 12),
+                          padding: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: AppColors.borderLight),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.primaryPlum.withValues(
+                                  alpha: 0.04,
+                                ),
+                                blurRadius: 8,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.network(
+                                  booking.itemImageUrl,
                                   width: 50,
                                   height: 50,
-                                  color: AppColors.chipBackground,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      Container(
+                                        width: 50,
+                                        height: 50,
+                                        color: AppColors.chipBackground,
+                                      ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(booking.itemTitle, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                                  Text('${booking.date} • ₹${booking.totalAmount.toInt()}', style: AppTypography.small),
-                                ],
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      booking.itemTitle,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    Text(
+                                      '${booking.date} • ₹${booking.totalAmount.toInt()}',
+                                      style: AppTypography.small,
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            StatusBadge(status: booking.status.name),
-                          ],
+                              StatusBadge(status: booking.status.name),
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -144,8 +202,13 @@ class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with 
               return Card(
                 margin: const EdgeInsets.only(bottom: 12),
                 child: ListTile(
-                  title: Text(evt.title, style: const TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: Text('${evt.date} • ${evt.dancersNeeded} Dancers Needed'),
+                  title: Text(
+                    evt.title,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    '${evt.date} • ${evt.dancersNeeded} Dancers Needed',
+                  ),
                   trailing: StatusBadge(status: evt.status),
                 ),
               );
@@ -155,21 +218,35 @@ class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with 
           // 3. Dancer Requests Tab
           ListView.builder(
             padding: const EdgeInsets.all(16),
-            itemCount: userBookings.where((b) => b.type == BookingType.dancer).length,
+            itemCount: userBookings
+                .where((b) => b.type == BookingType.dancer)
+                .length,
             itemBuilder: (context, index) {
-              final b = userBookings.where((b) => b.type == BookingType.dancer).toList()[index];
+              final b = userBookings
+                  .where((b) => b.type == BookingType.dancer)
+                  .toList()[index];
               return Card(
                 margin: const EdgeInsets.only(bottom: 12),
                 child: ListTile(
-                  title: Text(b.itemTitle, style: const TextStyle(fontWeight: FontWeight.bold)),
+                  title: Text(
+                    b.itemTitle,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   subtitle: Text('Date: ${b.date} • ₹${b.totalAmount.toInt()}'),
                   trailing: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => CheckInScreen(booking: b)),
+                        MaterialPageRoute(
+                          builder: (_) => CheckInScreen(booking: b),
+                        ),
                       );
                     },
-                    style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6)),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                    ),
                     child: const Text('Manage', style: TextStyle(fontSize: 11)),
                   ),
                 ),
@@ -186,8 +263,13 @@ class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with 
               return Card(
                 margin: const EdgeInsets.only(bottom: 12),
                 child: ListTile(
-                  title: Text(exp.title, style: const TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: Text('Category: ${exp.category} • ₹${exp.pricePerGuest.toInt()}/guest'),
+                  title: Text(
+                    exp.title,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    'Category: ${exp.category} • ₹${exp.pricePerGuest.toInt()}/guest',
+                  ),
                   trailing: const StatusBadge(status: 'Active'),
                 ),
               );
@@ -211,19 +293,37 @@ class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with 
                 child: Row(
                   children: [
                     CircleAvatar(
-                      backgroundColor: AppColors.primaryPlum.withValues(alpha: 0.1),
-                      child: const Icon(Icons.notifications_rounded, color: AppColors.primaryPlum, size: 20),
+                      backgroundColor: AppColors.primaryPlum.withValues(
+                        alpha: 0.1,
+                      ),
+                      child: const Icon(
+                        Icons.notifications_rounded,
+                        color: AppColors.primaryPlum,
+                        size: 20,
+                      ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(notif.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                          Text(
+                            notif.title,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
                           const SizedBox(height: 2),
                           Text(notif.body, style: AppTypography.small),
                           const SizedBox(height: 4),
-                          Text(notif.timeAgo, style: const TextStyle(fontSize: 10, color: AppColors.secondaryText)),
+                          Text(
+                            notif.timeAgo,
+                            style: const TextStyle(
+                              fontSize: 10,
+                              color: AppColors.secondaryText,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -240,10 +340,16 @@ class _ActivityDashboardScreenState extends State<ActivityDashboardScreen> with 
 
 class _MetricCard extends StatelessWidget {
   final String title;
-  final String value;
+  final double value;
+  final String? prefix;
   final Color color;
 
-  const _MetricCard({required this.title, required this.value, required this.color});
+  const _MetricCard({
+    required this.title,
+    required this.value,
+    required this.color,
+    this.prefix,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -252,13 +358,44 @@ class _MetricCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: TextStyle(fontSize: 12, color: color, fontWeight: FontWeight.bold)),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 12,
+              color: color,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const SizedBox(height: 4),
-          Text(value, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: color)),
+          Row(
+            children: [
+              if (prefix != null) ...[
+                AnimatedDefaultTextStyle(
+                  duration: AppMotion.fast,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: color,
+                  ),
+                  child: Text(prefix!),
+                ),
+                const SizedBox(width: 2),
+              ],
+              AnimatedStat(
+                value: value,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: color,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

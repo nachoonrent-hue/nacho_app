@@ -14,7 +14,8 @@ class MockData {
     email: 'komalpreet@nachoonrent.com',
     phone: '+91 98765 43210',
     location: 'Chandigarh, India',
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    avatarUrl:
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
     bio: 'Passionate about Indian wedding heritage & Baraat celebrations!',
     isVerified: true,
     hasDancerProfile: true,
@@ -31,11 +32,13 @@ class MockData {
       id: 'dnc_001',
       userId: 'usr_001',
       name: 'Komalpreet & Sher-E-Punjab Troupe',
-      avatarUrl: 'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=400&auto=format&fit=crop&q=80',
-      coverVideoThumbnail: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80',
+      avatarUrl:
+          'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=400&auto=format&fit=crop&q=80',
+      coverVideoThumbnail:
+          'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80',
       videoUrls: [
         'https://example.com/videos/bhangra_baraat_live.mp4',
-        'https://example.com/videos/giddha_performance.mp4'
+        'https://example.com/videos/giddha_performance.mp4',
       ],
       photoGallery: [
         'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80',
@@ -49,19 +52,23 @@ class MockData {
       reviewCount: 48,
       startingPrice: 25000.0,
       experienceYears: '8+ Years',
-      about: 'High-energy authentic Punjabi Bhangra troupe specializing in explosive Baraat entries, Sangeet performances, and international wedding cultural entertainment.',
+      about:
+          'High-energy authentic Punjabi Bhangra troupe specializing in explosive Baraat entries, Sangeet performances, and international wedding cultural entertainment.',
       isAvailable: true,
       instagramHandle: '@sherepunjab_bhangra',
       youtubeChannel: 'SherEPunjabDancers',
       completedBookings: 64,
-      performanceDetails: 'Group of 6 to 12 performers with Dhol players. Props included.',
+      performanceDetails:
+          'Group of 6 to 12 performers with Dhol players. Props included.',
     ),
     DancerModel(
       id: 'dnc_002',
       userId: 'usr_002',
       name: 'Ananya Sharma Dance Academy',
-      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
-      coverVideoThumbnail: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&auto=format&fit=crop&q=80',
+      avatarUrl:
+          'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+      coverVideoThumbnail:
+          'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&auto=format&fit=crop&q=80',
       videoUrls: ['https://example.com/videos/bollywood_fusion.mp4'],
       photoGallery: [
         'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&auto=format&fit=crop&q=80',
@@ -69,24 +76,33 @@ class MockData {
       ],
       isVerified: true,
       location: 'New Delhi / Gurgaon',
-      danceStyles: ['Bollywood', 'Semi-Classical', 'Kathak Fusion', 'Contemporary'],
+      danceStyles: [
+        'Bollywood',
+        'Semi-Classical',
+        'Kathak Fusion',
+        'Contemporary',
+      ],
       rating: 4.8,
       reviewCount: 35,
       startingPrice: 35000.0,
       experienceYears: '6 Years',
-      about: 'Professional choreography and live dance performance team for luxury Indian Sangeet ceremonies and grand reception galas.',
+      about:
+          'Professional choreography and live dance performance team for luxury Indian Sangeet ceremonies and grand reception galas.',
       isAvailable: true,
       instagramHandle: '@ananya_glam_dance',
       youtubeChannel: 'AnanyaDanceStudio',
       completedBookings: 42,
-      performanceDetails: 'Custom choreography for bride & groom plus 4 background dancers.',
+      performanceDetails:
+          'Custom choreography for bride & groom plus 4 background dancers.',
     ),
     DancerModel(
       id: 'dnc_003',
       userId: 'usr_003',
       name: 'Padmavati Royal Ghoomar Group',
-      avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
-      coverVideoThumbnail: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&auto=format&fit=crop&q=80',
+      avatarUrl:
+          'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
+      coverVideoThumbnail:
+          'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&auto=format&fit=crop&q=80',
       videoUrls: ['https://example.com/videos/rajasthani_ghoomar.mp4'],
       photoGallery: [
         'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&auto=format&fit=crop&q=80',
@@ -99,19 +115,23 @@ class MockData {
       reviewCount: 52,
       startingPrice: 30000.0,
       experienceYears: '10+ Years',
-      about: 'Authentic royal Rajasthani folk dancers straight from the heritage palaces of Jaipur and Udaipur. Perfect for Sangeet, Haldi & royal themed weddings.',
+      about:
+          'Authentic royal Rajasthani folk dancers straight from the heritage palaces of Jaipur and Udaipur. Perfect for Sangeet, Haldi & royal themed weddings.',
       isAvailable: true,
       instagramHandle: '@padmavati_ghoomar',
       youtubeChannel: 'RoyalGhoomarOfficial',
       completedBookings: 89,
-      performanceDetails: 'Traditional Poshak attire, fire & pot balancing routines included.',
+      performanceDetails:
+          'Traditional Poshak attire, fire & pot balancing routines included.',
     ),
     DancerModel(
       id: 'dnc_004',
       userId: 'usr_004',
       name: 'Rangeelo Garba Beats',
-      avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
-      coverVideoThumbnail: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=80',
+      avatarUrl:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+      coverVideoThumbnail:
+          'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=80',
       videoUrls: ['https://example.com/videos/dandiya_night.mp4'],
       photoGallery: [
         'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=80',
@@ -123,12 +143,14 @@ class MockData {
       reviewCount: 22,
       startingPrice: 20000.0,
       experienceYears: '5 Years',
-      about: 'Vibrant Gujarati Garba and Dandiya team specializing in energetic interactive dance sets for pre-wedding celebrations.',
+      about:
+          'Vibrant Gujarati Garba and Dandiya team specializing in energetic interactive dance sets for pre-wedding celebrations.',
       isAvailable: true,
       instagramHandle: '@rangeelo_garba_beats',
       youtubeChannel: 'GarbaBeatsOfficial',
       completedBookings: 28,
-      performanceDetails: '8 Dancers with traditional Chaniya Choli costume setup.',
+      performanceDetails:
+          '8 Dancers with traditional Chaniya Choli costume setup.',
     ),
   ];
 
@@ -137,44 +159,53 @@ class MockData {
       id: 'evt_001',
       title: 'Grand Royal Punjabi Wedding & Sangeet Night',
       weddingType: 'Punjabi Wedding',
-      description: 'A 3-day royal Punjabi wedding celebration at Forest Hill Resort. Seeking top-tier Bhangra troupe for a high-octane groom Baraat arrival and live Dhol fusion.',
+      description:
+          'A 3-day royal Punjabi wedding celebration at Forest Hill Resort. Seeking top-tier Bhangra troupe for a high-octane groom Baraat arrival and live Dhol fusion.',
       date: '28 Oct, 2026',
       time: '06:00 PM',
       location: 'Forest Hill Resort, Mohali / Chandigarh',
       organizerId: 'org_001',
       organizerName: 'Komalpreet Events & Co.',
-      organizerAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+      organizerAvatar:
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
       expectedCrowd: 650,
-      dancerRequirements: 'Looking for 8 Bhangra dancers with 2 live Dhol players for 2 hours performance.',
+      dancerRequirements:
+          'Looking for 8 Bhangra dancers with 2 live Dhol players for 2 hours performance.',
       dancersNeeded: 8,
       preferredDanceStyle: 'Bhangra',
       budget: 45000.0,
-      coverImageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
+      coverImageUrl:
+          'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
       photos: [
         'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop&q=80',
       ],
       status: 'published',
       performanceDuration: '2 Hours',
-      cancellationRules: 'Full refund up to 7 days prior. 50% refund up to 48 hours prior.',
+      cancellationRules:
+          'Full refund up to 7 days prior. 50% refund up to 48 hours prior.',
     ),
     WeddingEventModel(
       id: 'evt_002',
       title: 'Heritage Palace Rajasthani Wedding',
       weddingType: 'Rajasthani Wedding',
-      description: 'Palace wedding in Jaipur. Requires Ghoomar & Kalbelia dancers to welcome international and NRI guests during the Royal Welcome Dinner.',
+      description:
+          'Palace wedding in Jaipur. Requires Ghoomar & Kalbelia dancers to welcome international and NRI guests during the Royal Welcome Dinner.',
       date: '15 Nov, 2026',
       time: '07:30 PM',
       location: 'Chomu Palace, Jaipur',
       organizerId: 'org_002',
       organizerName: 'Rajwada Wedding Planners',
-      organizerAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+      organizerAvatar:
+          'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
       expectedCrowd: 400,
-      dancerRequirements: 'Authentic Rajasthani folk dancers for guest reception and Sangeet ceremony.',
+      dancerRequirements:
+          'Authentic Rajasthani folk dancers for guest reception and Sangeet ceremony.',
       dancersNeeded: 6,
       preferredDanceStyle: 'Rajasthani',
       budget: 50000.0,
-      coverImageUrl: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&auto=format&fit=crop&q=80',
+      coverImageUrl:
+          'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&auto=format&fit=crop&q=80',
       photos: [
         'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&auto=format&fit=crop&q=80',
       ],
@@ -186,19 +217,22 @@ class MockData {
       id: 'evt_003',
       title: 'Sangeet & Bollywood Dhamaka Night',
       weddingType: 'Marwari Wedding',
-      description: 'Sangeet night requiring energetic Bollywood backup dancers to support family dance acts and bride/groom entry.',
+      description:
+          'Sangeet night requiring energetic Bollywood backup dancers to support family dance acts and bride/groom entry.',
       date: '02 Dec, 2026',
       time: '08:00 PM',
       location: 'The Leela Palace, New Delhi',
       organizerId: 'org_003',
       organizerName: 'Shubh Muhurat Events',
-      organizerAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+      organizerAvatar:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
       expectedCrowd: 500,
       dancerRequirements: '4 male and 4 female Bollywood fusion dancers.',
       dancersNeeded: 8,
       preferredDanceStyle: 'Bollywood',
       budget: 60000.0,
-      coverImageUrl: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&auto=format&fit=crop&q=80',
+      coverImageUrl:
+          'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&auto=format&fit=crop&q=80',
       photos: [
         'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&auto=format&fit=crop&q=80',
       ],
@@ -213,10 +247,12 @@ class MockData {
       id: 'org_001',
       userId: 'usr_001',
       name: 'Komalpreet Events & Co.',
-      avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+      avatarUrl:
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
       isVerified: true,
       location: 'Chandigarh & Delhi NCR',
-      about: 'Boutique wedding management agency crafting unforgettable big fat Indian weddings across North India.',
+      about:
+          'Boutique wedding management agency crafting unforgettable big fat Indian weddings across North India.',
       rating: 4.9,
       reviewCount: 31,
       totalEventsOrganized: 45,
@@ -229,10 +265,12 @@ class MockData {
       id: 'org_002',
       userId: 'usr_002',
       name: 'Rajwada Wedding Planners',
-      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+      avatarUrl:
+          'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
       isVerified: true,
       location: 'Jaipur, Rajasthan',
-      about: 'Specialized in heritage palace destination weddings, traditional Baraat processions, and cultural guest experiences.',
+      about:
+          'Specialized in heritage palace destination weddings, traditional Baraat processions, and cultural guest experiences.',
       rating: 4.95,
       reviewCount: 64,
       totalEventsOrganized: 82,
@@ -248,12 +286,14 @@ class MockData {
       id: 'mrg_001',
       title: 'Dance in a Live Punjabi Wedding Baraat',
       category: 'Baraat',
-      description: 'Join an authentic royal Punjabi wedding procession as an honored guest dancer! Experience the thunderous live Dhol drums, wear traditional turban/dupatta, dance along with the groom entourage, and enjoy authentic wedding cuisine.',
+      description:
+          'Join an authentic royal Punjabi wedding procession as an honored guest dancer! Experience the thunderous live Dhol drums, wear traditional turban/dupatta, dance along with the groom entourage, and enjoy authentic wedding cuisine.',
       location: 'Chandigarh / Mohali',
       duration: '4 Hours',
       hostId: 'usr_001',
       hostName: 'Komalpreet Singh',
-      hostAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+      hostAvatar:
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
       pricePerGuest: 4999.0,
       guestCapacity: 10,
       includes: [
@@ -261,18 +301,16 @@ class MockData {
         'Traditional wedding turban tied for guests',
         'Live Bhangra workshop before procession starts',
         'Authentic 5-course wedding dinner buffet',
-        'Professional photography & video souvenir'
+        'Professional photography & video souvenir',
       ],
-      excludes: [
-        'Hotel accommodation',
-        'Personal transportation to venue'
-      ],
+      excludes: ['Hotel accommodation', 'Personal transportation to venue'],
       guestRules: [
         'Festive Indian ethnic or formal attire required',
         'Respect family tradition & privacy guidelines',
-        'Arrive 30 minutes before Baraat assembly'
+        'Arrive 30 minutes before Baraat assembly',
       ],
-      coverImageUrl: 'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80',
+      coverImageUrl:
+          'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80',
       galleryUrls: [
         'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
@@ -286,22 +324,25 @@ class MockData {
       id: 'mrg_002',
       title: 'Royal Sangeet & Choreography Workshop',
       category: 'Sangeet',
-      description: 'Step into a glittering pre-wedding Sangeet evening. Learn iconic Bollywood dance steps with celebrity choreographers and participate in the live celebration.',
+      description:
+          'Step into a glittering pre-wedding Sangeet evening. Learn iconic Bollywood dance steps with celebrity choreographers and participate in the live celebration.',
       location: 'New Delhi',
       duration: '3 Hours',
       hostId: 'usr_002',
       hostName: 'Ananya Sharma',
-      hostAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+      hostAvatar:
+          'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
       pricePerGuest: 3499.0,
       guestCapacity: 15,
       includes: [
         '90-min Bollywood dance masterclass',
         'Entry ticket to Sangeet night gala',
-        'Cocktails and royal appetizers'
+        'Cocktails and royal appetizers',
       ],
       excludes: ['Personal makeup service'],
       guestRules: ['Wear comfortable dance shoes or festive attire'],
-      coverImageUrl: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&auto=format&fit=crop&q=80',
+      coverImageUrl:
+          'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&auto=format&fit=crop&q=80',
       galleryUrls: [
         'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&auto=format&fit=crop&q=80',
       ],
@@ -318,7 +359,8 @@ class MockData {
       type: BookingType.dancer,
       itemId: 'dnc_001',
       itemTitle: 'Komalpreet & Sher-E-Punjab Troupe',
-      itemImageUrl: 'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=400&auto=format&fit=crop&q=80',
+      itemImageUrl:
+          'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=400&auto=format&fit=crop&q=80',
       customerId: 'usr_002',
       customerName: 'Ananya Sharma',
       providerId: 'usr_001',
@@ -338,7 +380,8 @@ class MockData {
       type: BookingType.mirage,
       itemId: 'mrg_001',
       itemTitle: 'Dance in a Live Punjabi Wedding Baraat',
-      itemImageUrl: 'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=400&auto=format&fit=crop&q=80',
+      itemImageUrl:
+          'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=400&auto=format&fit=crop&q=80',
       customerId: 'usr_001',
       customerName: 'Komalpreet Singh',
       providerId: 'usr_002',
@@ -361,9 +404,11 @@ class MockData {
       bookingId: 'bk_001',
       targetId: 'dnc_001',
       authorName: 'Rohan Malhotra (Organizer)',
-      authorAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+      authorAvatar:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
       rating: 5.0,
-      comment: 'Unbelievable energy! Komalpreet and his Bhangra troupe made the Baraat procession the highlight of our entire wedding! Highly recommended.',
+      comment:
+          'Unbelievable energy! Komalpreet and his Bhangra troupe made the Baraat procession the highlight of our entire wedding! Highly recommended.',
       date: '10 Sep 2026',
       isVerifiedBooking: true,
     ),
@@ -372,9 +417,11 @@ class MockData {
       bookingId: 'bk_003',
       targetId: 'mrg_001',
       authorName: 'Sarah Jenkins (USA)',
-      authorAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80',
+      authorAvatar:
+          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80',
       rating: 5.0,
-      comment: 'An unforgettable cultural experience! Dancing in an authentic Indian wedding Baraat was a dream come true. Super warm hosts and amazing food!',
+      comment:
+          'An unforgettable cultural experience! Dancing in an authentic Indian wedding Baraat was a dream come true. Super warm hosts and amazing food!',
       date: '04 Aug 2026',
       isVerifiedBooking: true,
     ),
@@ -384,7 +431,8 @@ class MockData {
     NotificationModel(
       id: 'notif_001',
       title: 'Booking Confirmed!',
-      body: 'Your dancer booking for Sher-E-Punjab Troupe has been accepted and confirmed.',
+      body:
+          'Your dancer booking for Sher-E-Punjab Troupe has been accepted and confirmed.',
       timeAgo: '2 hours ago',
       isRead: false,
       type: 'booking',

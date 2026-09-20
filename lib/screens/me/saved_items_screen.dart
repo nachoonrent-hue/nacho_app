@@ -9,7 +9,9 @@ class SavedItemsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appState = context.appState;
-    final savedDancers = appState.dancers.where((d) => appState.isDancerSaved(d.id)).toList();
+    final savedDancers = appState.dancers
+        .where((d) => appState.isDancerSaved(d.id))
+        .toList();
 
     return Scaffold(
       appBar: AppBar(title: const Text('Saved Dancers & Bookmarks')),
@@ -25,7 +27,9 @@ class SavedItemsScreen extends StatelessWidget {
                   isSaved: true,
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => DancerProfileScreen(dancer: dancer)),
+                      MaterialPageRoute(
+                        builder: (_) => DancerProfileScreen(dancer: dancer),
+                      ),
                     );
                   },
                   onSaveTap: () => appState.toggleSaveDancer(dancer.id),

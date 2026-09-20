@@ -40,7 +40,10 @@ class SettingsScreen extends StatelessWidget {
           ),
           const ListTile(
             title: Text('App Version'),
-            trailing: Text('1.0.0 (Phase 1)', style: TextStyle(color: AppColors.secondaryText)),
+            trailing: Text(
+              '1.0.0 (Phase 1)',
+              style: TextStyle(color: AppColors.secondaryText),
+            ),
           ),
         ],
       ),

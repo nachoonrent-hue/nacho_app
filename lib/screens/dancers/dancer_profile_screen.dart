@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../models/dancer_model.dart';
 import '../../services/app_state_provider.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/animations.dart';
 import '../../widgets/verification_badge.dart';
 import '../booking/booking_request_screen.dart';
 
@@ -27,12 +28,19 @@ class DancerProfileScreen extends StatelessWidget {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Image.network(
-                    dancer.coverVideoThumbnail,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
-                      color: AppColors.chipBackground,
-                      child: const Icon(Icons.movie_rounded, size: 64, color: AppColors.primaryPlum),
+                  Hero(
+                    tag: 'dancer-cover-${dancer.id}',
+                    child: Image.network(
+                      dancer.coverVideoThumbnail,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        color: AppColors.chipBackground,
+                        child: const Icon(
+                          Icons.movie_rounded,
+                          size: 64,
+                          color: AppColors.primaryPlum,
+                        ),
+                      ),
                     ),
                   ),
                   Container(
@@ -84,7 +92,10 @@ class DancerProfileScreen extends StatelessWidget {
                               ),
                               Text(
                                 dancer.location,
-                                style: const TextStyle(color: Colors.white70, fontSize: 13),
+                                style: const TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 13,
+                                ),
                               ),
                             ],
                           ),
@@ -98,7 +109,9 @@ class DancerProfileScreen extends StatelessWidget {
             actions: [
               IconButton(
                 icon: Icon(
-                  isSaved ? Icons.bookmark_rounded : Icons.bookmark_border_rounded,
+                  isSaved
+                      ? Icons.bookmark_rounded
+                      : Icons.bookmark_border_rounded,
                   color: isSaved ? AppColors.saffron : Colors.white,
                 ),
                 onPressed: () {
@@ -109,7 +122,9 @@ class DancerProfileScreen extends StatelessWidget {
                 icon: const Icon(Icons.share_rounded, color: Colors.white),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Profile link copied to clipboard!')),
+                    const SnackBar(
+                      content: Text('Profile link copied to clipboard!'),
+                    ),
                   );
                 },
               ),
@@ -123,47 +138,56 @@ class DancerProfileScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Overview Stats Bar
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.primaryPlum.withValues(alpha: 0.05),
-                          blurRadius: 10,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _StatItem(
-                          label: 'Rating',
-                          value: '${dancer.rating} ★',
-                          subtitle: '${dancer.reviewCount} reviews',
-                        ),
-                        _divider(),
-                        _StatItem(
-                          label: 'Experience',
-                          value: dancer.experienceYears,
-                          subtitle: 'Professional',
-                        ),
-                        _divider(),
-                        _StatItem(
-                          label: 'Completed',
-                          value: '${dancer.completedBookings}',
-                          subtitle: 'Bookings',
-                        ),
-                      ],
+                  Entrance(
+                    index: 0,
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.primaryPlum.withValues(
+                              alpha: 0.05,
+                            ),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          _StatItem(
+                            label: 'Rating',
+                            value: '${dancer.rating} ★',
+                            subtitle: '${dancer.reviewCount} reviews',
+                          ),
+                          _divider(),
+                          _StatItem(
+                            label: 'Experience',
+                            value: dancer.experienceYears,
+                            subtitle: 'Professional',
+                          ),
+                          _divider(),
+                          _StatItem(
+                            label: 'Completed',
+                            value: '',
+                            subtitle: 'Bookings',
+                            count: dancer.completedBookings.toDouble(),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
 
                   const SizedBox(height: 24),
 
                   // Performance Video Showcase Section
-                  const Text('Performance Videos', style: AppTypography.h2),
+                  const Entrance(
+                    index: 1,
+                    child: Text('Performance Videos', style: AppTypography.h2),
+                  ),
                   const SizedBox(height: 12),
                   SizedBox(
                     height: 110,
@@ -187,7 +211,11 @@ class DancerProfileScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Center(
-                              child: Icon(Icons.play_circle_fill, color: Colors.white, size: 36),
+                              child: Icon(
+                                Icons.play_circle_fill,
+                                color: Colors.white,
+                                size: 36,
+                              ),
                             ),
                           ),
                         );
@@ -198,7 +226,10 @@ class DancerProfileScreen extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Dance Styles Tags
-                  const Text('Specialized Styles', style: AppTypography.h2),
+                  const Entrance(
+                    index: 2,
+                    child: Text('Specialized Styles', style: AppTypography.h2),
+                  ),
                   const SizedBox(height: 10),
                   Wrap(
                     spacing: 8,
@@ -207,7 +238,10 @@ class DancerProfileScreen extends StatelessWidget {
                       return Chip(
                         label: Text(style),
                         backgroundColor: AppColors.chipBackground,
-                        labelStyle: const TextStyle(color: AppColors.primaryPlum, fontWeight: FontWeight.bold),
+                        labelStyle: const TextStyle(
+                          color: AppColors.primaryPlum,
+                          fontWeight: FontWeight.bold,
+                        ),
                       );
                     }).toList(),
                   ),
@@ -215,33 +249,52 @@ class DancerProfileScreen extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // About Section
-                  const Text('About Dancer', style: AppTypography.h2),
+                  const Entrance(
+                    index: 3,
+                    child: Text('About Dancer', style: AppTypography.h2),
+                  ),
                   const SizedBox(height: 8),
                   Text(dancer.about, style: AppTypography.body),
 
                   const SizedBox(height: 24),
 
                   // Performance & Setup Info
-                  const Text('Performance Details', style: AppTypography.h2),
+                  const Entrance(
+                    index: 4,
+                    child: Text('Performance Details', style: AppTypography.h2),
+                  ),
                   const SizedBox(height: 8),
-                  Text(dancer.performanceDetails, style: AppTypography.bodySecondary),
+                  Text(
+                    dancer.performanceDetails,
+                    style: AppTypography.bodySecondary,
+                  ),
 
                   const SizedBox(height: 24),
 
                   // Social Media Connections
-                  const Text('Social Media & Portfolio', style: AppTypography.h2),
+                  const Entrance(
+                    index: 5,
+                    child: Text(
+                      'Social Media & Portfolio',
+                      style: AppTypography.h2,
+                    ),
+                  ),
                   const SizedBox(height: 12),
                   Row(
                     children: [
                       _SocialButton(
                         icon: Icons.camera_alt_outlined,
-                        label: dancer.instagramHandle.isNotEmpty ? dancer.instagramHandle : '@dancer',
+                        label: dancer.instagramHandle.isNotEmpty
+                            ? dancer.instagramHandle
+                            : '@dancer',
                         color: Colors.purple,
                       ),
                       const SizedBox(width: 12),
                       _SocialButton(
                         icon: Icons.video_library_outlined,
-                        label: dancer.youtubeChannel.isNotEmpty ? dancer.youtubeChannel : 'YouTube Channel',
+                        label: dancer.youtubeChannel.isNotEmpty
+                            ? dancer.youtubeChannel
+                            : 'YouTube Channel',
                         color: Colors.red,
                       ),
                     ],
@@ -250,47 +303,55 @@ class DancerProfileScreen extends StatelessWidget {
                   const SizedBox(height: 32),
 
                   // Price & Booking Bar
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: AppColors.warmIvory,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.borderLight),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text('Starting Price', style: AppTypography.small),
-                            Text(
-                              '₹${dancer.startingPrice.toInt()}',
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.primaryPlum,
+                  Entrance(
+                    index: 6,
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: AppColors.warmIvory,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: AppColors.borderLight),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Starting Price',
+                                style: AppTypography.small,
                               ),
-                            ),
-                          ],
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (_) => BookingRequestScreen(
-                                  dancer: dancer,
+                              Text(
+                                '₹${dancer.startingPrice.toInt()}',
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.primaryPlum,
                                 ),
                               ),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryPlum,
-                            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
+                            ],
                           ),
-                          child: const Text('BOOK DANCER'),
-                        ),
-                      ],
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                      BookingRequestScreen(dancer: dancer),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primaryPlum,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 28,
+                                vertical: 16,
+                              ),
+                            ),
+                            child: const Text('BOOK DANCER'),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
 
@@ -304,23 +365,66 @@ class DancerProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _divider() => Container(height: 30, width: 1, color: AppColors.borderLight);
+  Widget _divider() =>
+      Container(height: 30, width: 1, color: AppColors.borderLight);
 }
 
 class _StatItem extends StatelessWidget {
   final String label;
   final String value;
   final String subtitle;
+  final double? count;
 
-  const _StatItem({required this.label, required this.value, required this.subtitle});
+  const _StatItem({
+    required this.label,
+    required this.value,
+    required this.subtitle,
+    this.count,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(value, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.primaryPlum)),
+        if (count == null)
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primaryPlum,
+            ),
+          )
+        else
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AnimatedStat(
+                value: count!,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primaryPlum,
+                ),
+              ),
+              if (value.isNotEmpty)
+                Text(
+                  value,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primaryPlum,
+                  ),
+                ),
+            ],
+          ),
         const SizedBox(height: 2),
-        Text(subtitle, style: const TextStyle(fontSize: 11, color: AppColors.secondaryText)),
+        Text(
+          subtitle,
+          style: const TextStyle(fontSize: 11, color: AppColors.secondaryText),
+        ),
       ],
     );
   }
@@ -331,7 +435,11 @@ class _SocialButton extends StatelessWidget {
   final String label;
   final Color color;
 
-  const _SocialButton({required this.icon, required this.label, required this.color});
+  const _SocialButton({
+    required this.icon,
+    required this.label,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -350,7 +458,11 @@ class _SocialButton extends StatelessWidget {
             Flexible(
               child: Text(
                 label,
-                style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: color,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
                 overflow: TextOverflow.ellipsis,
               ),
             ),

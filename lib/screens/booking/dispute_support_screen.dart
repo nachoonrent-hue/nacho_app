@@ -14,7 +14,9 @@ class DisputeSupportScreen extends StatefulWidget {
 
 class _DisputeSupportScreenState extends State<DisputeSupportScreen> {
   String _selectedReason = 'Dancer did not show up';
-  final _detailsController = TextEditingController(text: 'Dancer did not arrive at venue on scheduled time.');
+  final _detailsController = TextEditingController(
+    text: 'Dancer did not arrive at venue on scheduled time.',
+  );
 
   final List<String> _disputeReasons = [
     'Dancer did not show up',
@@ -22,7 +24,7 @@ class _DisputeSupportScreenState extends State<DisputeSupportScreen> {
     'Performance duration was shorter than agreed',
     'Organizer denied attendance at venue',
     'Payment refund request',
-    'Other issue'
+    'Other issue',
   ];
 
   @override
@@ -42,12 +44,19 @@ class _DisputeSupportScreenState extends State<DisputeSupportScreen> {
               ),
               child: Row(
                 children: const [
-                  Icon(Icons.report_problem_outlined, color: AppColors.errorRed),
+                  Icon(
+                    Icons.report_problem_outlined,
+                    color: AppColors.errorRed,
+                  ),
                   SizedBox(width: 10),
                   Expanded(
                     child: Text(
                       'Nachoonrent Protection System will hold funds while our support team investigates both sides.',
-                      style: TextStyle(color: AppColors.errorRed, fontSize: 12, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: AppColors.errorRed,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -55,7 +64,10 @@ class _DisputeSupportScreenState extends State<DisputeSupportScreen> {
             ),
             const SizedBox(height: 24),
 
-            const Text('Reason for Dispute / Cancellation', style: AppTypography.h2),
+            const Text(
+              'Reason for Dispute / Cancellation',
+              style: AppTypography.h2,
+            ),
             const SizedBox(height: 12),
             ..._disputeReasons.map((reason) {
               final isSelected = _selectedReason == reason;
@@ -65,7 +77,9 @@ class _DisputeSupportScreenState extends State<DisputeSupportScreen> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: isSelected ? AppColors.primaryPlum : AppColors.borderLight,
+                    color: isSelected
+                        ? AppColors.primaryPlum
+                        : AppColors.borderLight,
                   ),
                 ),
                 child: Material(
@@ -76,8 +90,12 @@ class _DisputeSupportScreenState extends State<DisputeSupportScreen> {
                       setState(() => _selectedReason = reason);
                     },
                     leading: Icon(
-                      isSelected ? Icons.radio_button_checked_rounded : Icons.radio_button_off_rounded,
-                      color: isSelected ? AppColors.primaryPlum : AppColors.secondaryText,
+                      isSelected
+                          ? Icons.radio_button_checked_rounded
+                          : Icons.radio_button_off_rounded,
+                      color: isSelected
+                          ? AppColors.primaryPlum
+                          : AppColors.secondaryText,
                     ),
                     title: Text(reason, style: const TextStyle(fontSize: 14)),
                   ),
@@ -100,7 +118,9 @@ class _DisputeSupportScreenState extends State<DisputeSupportScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _submitDispute,
-                style: ElevatedButton.styleFrom(backgroundColor: AppColors.errorRed),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.errorRed,
+                ),
                 child: const Text('SUBMIT DISPUTE TICKET'),
               ),
             ),
@@ -119,7 +139,9 @@ class _DisputeSupportScreenState extends State<DisputeSupportScreen> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Dispute ticket raised. Support team is reviewing evidence.'),
+        content: Text(
+          'Dispute ticket raised. Support team is reviewing evidence.',
+        ),
         backgroundColor: AppColors.warning,
       ),
     );

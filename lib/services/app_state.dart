@@ -19,13 +19,17 @@ class AppState extends ChangeNotifier {
   final List<DancerModel> _dancers = List.from(MockData.dancers);
   List<DancerModel> get dancers => _dancers;
 
-  final List<WeddingEventModel> _weddingEvents = List.from(MockData.weddingEvents);
+  final List<WeddingEventModel> _weddingEvents = List.from(
+    MockData.weddingEvents,
+  );
   List<WeddingEventModel> get weddingEvents => _weddingEvents;
 
   final List<OrganizerModel> _organizers = List.from(MockData.organizers);
   List<OrganizerModel> get organizers => _organizers;
 
-  final List<MirageExperienceModel> _mirageExperiences = List.from(MockData.mirageExperiences);
+  final List<MirageExperienceModel> _mirageExperiences = List.from(
+    MockData.mirageExperiences,
+  );
   List<MirageExperienceModel> get mirageExperiences => _mirageExperiences;
 
   final List<BookingModel> _bookings = List.from(MockData.bookings);
@@ -34,7 +38,9 @@ class AppState extends ChangeNotifier {
   final List<ReviewModel> _reviews = List.from(MockData.reviews);
   List<ReviewModel> get reviews => _reviews;
 
-  final List<NotificationModel> _notifications = List.from(MockData.notifications);
+  final List<NotificationModel> _notifications = List.from(
+    MockData.notifications,
+  );
   List<NotificationModel> get notifications => _notifications;
 
   void setNavIndex(int index) {
@@ -78,7 +84,8 @@ class AppState extends ChangeNotifier {
 
   bool isDancerSaved(String id) => _currentUser.savedDancerIds.contains(id);
   bool isEventSaved(String id) => _currentUser.savedEventIds.contains(id);
-  bool isExperienceSaved(String id) => _currentUser.savedExperienceIds.contains(id);
+  bool isExperienceSaved(String id) =>
+      _currentUser.savedExperienceIds.contains(id);
 
   // Profile creation & update
   void saveDancerProfile(DancerModel profile) {
@@ -113,7 +120,8 @@ class AppState extends ChangeNotifier {
       NotificationModel(
         id: 'notif_${DateTime.now().millisecondsSinceEpoch}',
         title: 'New Booking Created',
-        body: 'Booking request for ${booking.itemTitle} submitted successfully.',
+        body:
+            'Booking request for ${booking.itemTitle} submitted successfully.',
         timeAgo: 'Just now',
         isRead: false,
         type: 'booking',
@@ -123,15 +131,27 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateBookingStatus(String bookingId, BookingStatus status, {String? reason}) {
+  void updateBookingStatus(
+    String bookingId,
+    BookingStatus status, {
+    String? reason,
+  }) {
     final index = _bookings.indexWhere((b) => b.id == bookingId);
     if (index >= 0) {
       final current = _bookings[index];
       _bookings[index] = current.copyWith(
         status: status,
-        isPaid: (status == BookingStatus.confirmed || status == BookingStatus.completed) ? true : current.isPaid,
-        cancellationReason: status == BookingStatus.cancelled ? reason : current.cancellationReason,
-        disputeReason: status == BookingStatus.disputed ? reason : current.disputeReason,
+        isPaid:
+            (status == BookingStatus.confirmed ||
+                status == BookingStatus.completed)
+            ? true
+            : current.isPaid,
+        cancellationReason: status == BookingStatus.cancelled
+            ? reason
+            : current.cancellationReason,
+        disputeReason: status == BookingStatus.disputed
+            ? reason
+            : current.disputeReason,
       );
 
       _notifications.insert(
@@ -139,7 +159,8 @@ class AppState extends ChangeNotifier {
         NotificationModel(
           id: 'notif_${DateTime.now().millisecondsSinceEpoch}',
           title: 'Booking Status Updated',
-          body: 'Booking for ${current.itemTitle} is now ${_bookings[index].statusLabel}.',
+          body:
+              'Booking for ${current.itemTitle} is now ${_bookings[index].statusLabel}.',
           timeAgo: 'Just now',
           isRead: false,
           type: 'booking',

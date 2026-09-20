@@ -35,7 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Mobile Phone Number',
                   prefixText: '+91 ',
-                  prefixIcon: Icon(Icons.phone_rounded, color: AppColors.primaryPlum),
+                  prefixIcon: Icon(
+                    Icons.phone_rounded,
+                    color: AppColors.primaryPlum,
+                  ),
                 ),
               ),
               const SizedBox(height: 24),
@@ -45,7 +48,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => OTPScreen(phoneNumber: '+91 ${_phoneController.text}'),
+                        builder: (_) => OTPScreen(
+                          phoneNumber: '+91 ${_phoneController.text}',
+                        ),
                       ),
                     );
                   },

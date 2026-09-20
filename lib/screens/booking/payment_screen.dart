@@ -51,11 +51,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           width: 50,
                           height: 50,
                           fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) => Container(
-                            width: 50,
-                            height: 50,
-                            color: AppColors.chipBackground,
-                          ),
+                          errorBuilder: (context, error, stackTrace) =>
+                              Container(
+                                width: 50,
+                                height: 50,
+                                color: AppColors.chipBackground,
+                              ),
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -63,8 +64,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(widget.booking.itemTitle, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                            Text('${widget.booking.date} at ${widget.booking.time}', style: AppTypography.small),
+                            Text(
+                              widget.booking.itemTitle,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                            Text(
+                              '${widget.booking.date} at ${widget.booking.time}',
+                              style: AppTypography.small,
+                            ),
                           ],
                         ),
                       ),
@@ -74,16 +84,28 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Base Amount', style: AppTypography.bodySecondary),
-                      Text('₹${subtotal.toInt()}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                      const Text(
+                        'Base Amount',
+                        style: AppTypography.bodySecondary,
+                      ),
+                      Text(
+                        '₹${subtotal.toInt()}',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 6),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Platform Guarantee Fee (5%)', style: AppTypography.bodySecondary),
-                      Text('₹${serviceFee.toInt()}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                      const Text(
+                        'Platform Guarantee Fee (5%)',
+                        style: AppTypography.bodySecondary,
+                      ),
+                      Text(
+                        '₹${serviceFee.toInt()}',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                   const Divider(height: 24),
@@ -91,7 +113,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Total Payable', style: AppTypography.h2),
-                      Text('₹${total.toInt()}', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: AppColors.emeraldSuccess)),
+                      Text(
+                        '₹${total.toInt()}',
+                        style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.emeraldSuccess,
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -114,7 +143,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   Expanded(
                     child: Text(
                       'Payment Protection Active: Funds are only released to provider after successful event check-in.',
-                      style: TextStyle(fontSize: 12, color: AppColors.emeraldSuccess, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.emeraldSuccess,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -125,7 +158,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
             const Text('Select Payment Option', style: AppTypography.h2),
             const SizedBox(height: 12),
-            _buildRadioTile('UPI / GPay / PhonePe', Icons.qr_code_scanner_rounded),
+            _buildRadioTile(
+              'UPI / GPay / PhonePe',
+              Icons.qr_code_scanner_rounded,
+            ),
             _buildRadioTile('Credit / Debit Card', Icons.credit_card_rounded),
             _buildRadioTile('Net Banking', Icons.account_balance_rounded),
 
@@ -168,9 +204,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
             setState(() => _selectedPaymentMethod = title);
           },
           leading: Icon(icon, color: AppColors.primaryPlum, size: 22),
-          title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+          title: Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+          ),
           trailing: Icon(
-            isSelected ? Icons.radio_button_checked_rounded : Icons.radio_button_off_rounded,
+            isSelected
+                ? Icons.radio_button_checked_rounded
+                : Icons.radio_button_off_rounded,
             color: isSelected ? AppColors.primaryPlum : AppColors.secondaryText,
           ),
         ),
@@ -182,7 +223,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
     final appState = context.appState;
     appState.updateBookingStatus(widget.booking.id, BookingStatus.confirmed);
 
-    final updated = appState.bookings.firstWhere((b) => b.id == widget.booking.id);
+    final updated = appState.bookings.firstWhere(
+      (b) => b.id == widget.booking.id,
+    );
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(

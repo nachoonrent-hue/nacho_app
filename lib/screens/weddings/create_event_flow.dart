@@ -13,26 +13,41 @@ class CreateEventFlow extends StatefulWidget {
 }
 
 class _CreateEventFlowState extends State<CreateEventFlow> {
-  late int _creationType; // 0: Wedding Event (Hire Dancers), 1: Mirage Experience (Invite Guests)
+  late int
+  _creationType; // 0: Wedding Event (Hire Dancers), 1: Mirage Experience (Invite Guests)
   int _currentStep = 0;
 
   // Event Form Controllers
-  final _titleController = TextEditingController(text: 'Royal Destination Sangeet Night');
-  final _descriptionController = TextEditingController(text: 'Seeking high-energy dancers to perform at our destination Sangeet function.');
-  final _locationController = TextEditingController(text: 'JW Marriott Resort, Jaipur');
+  final _titleController = TextEditingController(
+    text: 'Royal Destination Sangeet Night',
+  );
+  final _descriptionController = TextEditingController(
+    text:
+        'Seeking high-energy dancers to perform at our destination Sangeet function.',
+  );
+  final _locationController = TextEditingController(
+    text: 'JW Marriott Resort, Jaipur',
+  );
   final _dateController = TextEditingController(text: '12 Dec, 2026');
   final _timeController = TextEditingController(text: '07:00 PM');
   final _crowdController = TextEditingController(text: '450');
   final _dancersNeededController = TextEditingController(text: '6');
-  final _dancerReqsController = TextEditingController(text: 'Looking for 6 Ghoomar and Bollywood fusion dancers for 2 hour performance set.');
+  final _dancerReqsController = TextEditingController(
+    text:
+        'Looking for 6 Ghoomar and Bollywood fusion dancers for 2 hour performance set.',
+  );
   final _budgetController = TextEditingController(text: '35000');
 
   // Mirage Form Controllers
-  final _mirageTitleController = TextEditingController(text: 'Dance in a Live Punjabi Wedding Baraat');
+  final _mirageTitleController = TextEditingController(
+    text: 'Dance in a Live Punjabi Wedding Baraat',
+  );
   final _mirageCategoryController = TextEditingController(text: 'Baraat');
   final _miragePriceController = TextEditingController(text: '4999');
   final _mirageDurationController = TextEditingController(text: '4 Hours');
-  final _mirageIncludesController = TextEditingController(text: 'VIP Baraat Access Pass, Traditional Turban, 5-course Wedding Feast');
+  final _mirageIncludesController = TextEditingController(
+    text: 'VIP Baraat Access Pass, Traditional Turban, 5-course Wedding Feast',
+  );
 
   String _selectedWeddingType = 'Punjabi Wedding';
   String _selectedStyle = 'Bhangra';
@@ -45,7 +60,7 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
     'Bengali Wedding',
     'South Indian Wedding',
     'North Indian Wedding',
-    'Other'
+    'Other',
   ];
 
   final List<String> _danceStyles = [
@@ -55,7 +70,7 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
     'Gujarati',
     'Kathak',
     'Giddha',
-    'Folk'
+    'Folk',
   ];
 
   @override
@@ -68,7 +83,11 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_creationType == 0 ? 'Create Wedding Event' : 'Host Mirage Experience'),
+        title: Text(
+          _creationType == 0
+              ? 'Create Wedding Event'
+              : 'Host Mirage Experience',
+        ),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(4),
           child: LinearProgressIndicator(
@@ -105,7 +124,9 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
-                          color: _creationType == 0 ? AppColors.primaryPlum : Colors.transparent,
+                          color: _creationType == 0
+                              ? AppColors.primaryPlum
+                              : Colors.transparent,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
@@ -114,7 +135,9 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
-                            color: _creationType == 0 ? Colors.white : AppColors.charcoal,
+                            color: _creationType == 0
+                                ? Colors.white
+                                : AppColors.charcoal,
                           ),
                         ),
                       ),
@@ -131,7 +154,9 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
-                          color: _creationType == 1 ? AppColors.saffron : Colors.transparent,
+                          color: _creationType == 1
+                              ? AppColors.saffron
+                              : Colors.transparent,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
@@ -140,7 +165,9 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
-                            color: _creationType == 1 ? Colors.white : AppColors.charcoal,
+                            color: _creationType == 1
+                                ? Colors.white
+                                : AppColors.charcoal,
                           ),
                         ),
                       ),
@@ -152,7 +179,9 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
 
             const SizedBox(height: 24),
 
-            _creationType == 0 ? _buildEventStepContent() : _buildMirageStepContent(),
+            _creationType == 0
+                ? _buildEventStepContent()
+                : _buildMirageStepContent(),
           ],
         ),
       ),
@@ -189,9 +218,13 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: _creationType == 0 ? AppColors.primaryPlum : AppColors.saffron,
+                    backgroundColor: _creationType == 0
+                        ? AppColors.primaryPlum
+                        : AppColors.saffron,
                   ),
-                  child: Text(_currentStep == 3 ? 'Publish Listing' : 'Next Step'),
+                  child: Text(
+                    _currentStep == 3 ? 'Publish Listing' : 'Next Step',
+                  ),
                 ),
               ),
             ],
@@ -207,13 +240,21 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Step 1: Event & Tradition Details', style: AppTypography.h1),
+            const Text(
+              'Step 1: Event & Tradition Details',
+              style: AppTypography.h1,
+            ),
             const SizedBox(height: 8),
-            const Text('Select wedding tradition type and event name.', style: AppTypography.bodySecondary),
+            const Text(
+              'Select wedding tradition type and event name.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             DropdownButtonFormField<String>(
               initialValue: _selectedWeddingType,
-              decoration: const InputDecoration(labelText: 'Wedding Type / Tradition'),
+              decoration: const InputDecoration(
+                labelText: 'Wedding Type / Tradition',
+              ),
               items: _weddingTypes.map((type) {
                 return DropdownMenuItem(value: type, child: Text(type));
               }).toList(),
@@ -224,7 +265,9 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
             const SizedBox(height: 16),
             TextField(
               controller: _titleController,
-              decoration: const InputDecoration(labelText: 'Event Name / Title'),
+              decoration: const InputDecoration(
+                labelText: 'Event Name / Title',
+              ),
             ),
             const SizedBox(height: 16),
             TextField(
@@ -240,11 +283,16 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
           children: [
             const Text('Step 2: Date & Venue', style: AppTypography.h1),
             const SizedBox(height: 8),
-            const Text('When and where is the event taking place?', style: AppTypography.bodySecondary),
+            const Text(
+              'When and where is the event taking place?',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             TextField(
               controller: _locationController,
-              decoration: const InputDecoration(labelText: 'Venue Location & City'),
+              decoration: const InputDecoration(
+                labelText: 'Venue Location & City',
+              ),
             ),
             const SizedBox(height: 16),
             Row(
@@ -268,7 +316,9 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
             TextField(
               controller: _crowdController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Expected Guest Crowd Count'),
+              decoration: const InputDecoration(
+                labelText: 'Expected Guest Crowd Count',
+              ),
             ),
           ],
         );
@@ -278,11 +328,16 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
           children: [
             const Text('Step 3: Dancer Requirements', style: AppTypography.h1),
             const SizedBox(height: 8),
-            const Text('Specify how many dancers you need and budget.', style: AppTypography.bodySecondary),
+            const Text(
+              'Specify how many dancers you need and budget.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             DropdownButtonFormField<String>(
               initialValue: _selectedStyle,
-              decoration: const InputDecoration(labelText: 'Preferred Dance Style'),
+              decoration: const InputDecoration(
+                labelText: 'Preferred Dance Style',
+              ),
               items: _danceStyles.map((style) {
                 return DropdownMenuItem(value: style, child: Text(style));
               }).toList(),
@@ -294,7 +349,9 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
             TextField(
               controller: _dancersNeededController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Number of Dancers Needed'),
+              decoration: const InputDecoration(
+                labelText: 'Number of Dancers Needed',
+              ),
             ),
             const SizedBox(height: 16),
             TextField(
@@ -306,7 +363,9 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
             TextField(
               controller: _dancerReqsController,
               maxLines: 3,
-              decoration: const InputDecoration(labelText: 'Detailed Requirements / Proposal Notes'),
+              decoration: const InputDecoration(
+                labelText: 'Detailed Requirements / Proposal Notes',
+              ),
             ),
           ],
         );
@@ -315,9 +374,15 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Step 4: Review & Publish Event', style: AppTypography.h1),
+            const Text(
+              'Step 4: Review & Publish Event',
+              style: AppTypography.h1,
+            ),
             const SizedBox(height: 8),
-            const Text('Verify event listing information before going live.', style: AppTypography.bodySecondary),
+            const Text(
+              'Verify event listing information before going live.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             Container(
               padding: const EdgeInsets.all(16),
@@ -331,11 +396,26 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
                 children: [
                   Text(_titleController.text, style: AppTypography.h2),
                   const SizedBox(height: 4),
-                  Text('$_selectedWeddingType • ${_dateController.text}', style: AppTypography.small),
+                  Text(
+                    '$_selectedWeddingType • ${_dateController.text}',
+                    style: AppTypography.small,
+                  ),
                   const Divider(height: 20),
-                  Text('Budget: ₹${_budgetController.text}', style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.emeraldSuccess)),
+                  Text(
+                    'Budget: ₹${_budgetController.text}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.emeraldSuccess,
+                    ),
+                  ),
                   const SizedBox(height: 8),
-                  Text('${_dancersNeededController.text} Dancers Needed ($_selectedStyle)', style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.primaryPlum)),
+                  Text(
+                    '${_dancersNeededController.text} Dancers Needed ($_selectedStyle)',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primaryPlum,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -350,18 +430,28 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Step 1: Experience & Category', style: AppTypography.h1),
+            const Text(
+              'Step 1: Experience & Category',
+              style: AppTypography.h1,
+            ),
             const SizedBox(height: 8),
-            const Text('Title your cultural experience pass.', style: AppTypography.bodySecondary),
+            const Text(
+              'Title your cultural experience pass.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             TextField(
               controller: _mirageTitleController,
-              decoration: const InputDecoration(labelText: 'Experience Title (e.g. Dance in a Live Baraat)'),
+              decoration: const InputDecoration(
+                labelText: 'Experience Title (e.g. Dance in a Live Baraat)',
+              ),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _locationController,
-              decoration: const InputDecoration(labelText: 'Venue Location & City'),
+              decoration: const InputDecoration(
+                labelText: 'Venue Location & City',
+              ),
             ),
           ],
         );
@@ -371,12 +461,17 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
           children: [
             const Text('Step 2: Guest Inclusions', style: AppTypography.h1),
             const SizedBox(height: 8),
-            const Text('What will travelers experience during the event?', style: AppTypography.bodySecondary),
+            const Text(
+              'What will travelers experience during the event?',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             TextField(
               controller: _mirageIncludesController,
               maxLines: 4,
-              decoration: const InputDecoration(labelText: "What's Included (VIP access, attire, food)"),
+              decoration: const InputDecoration(
+                labelText: "What's Included (VIP access, attire, food)",
+              ),
             ),
           ],
         );
@@ -386,17 +481,24 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
           children: [
             const Text('Step 3: Pricing & Duration', style: AppTypography.h1),
             const SizedBox(height: 8),
-            const Text('Set ticket price per guest and duration.', style: AppTypography.bodySecondary),
+            const Text(
+              'Set ticket price per guest and duration.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             TextField(
               controller: _miragePriceController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Price per Guest (INR ₹)'),
+              decoration: const InputDecoration(
+                labelText: 'Price per Guest (INR ₹)',
+              ),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _mirageDurationController,
-              decoration: const InputDecoration(labelText: 'Experience Duration (e.g. 4 Hours)'),
+              decoration: const InputDecoration(
+                labelText: 'Experience Duration (e.g. 4 Hours)',
+              ),
             ),
           ],
         );
@@ -407,7 +509,10 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
           children: [
             const Text('Step 4: Review Mirage Pass', style: AppTypography.h1),
             const SizedBox(height: 8),
-            const Text('Review before publishing to Mirage Marketplace.', style: AppTypography.bodySecondary),
+            const Text(
+              'Review before publishing to Mirage Marketplace.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             Container(
               padding: const EdgeInsets.all(16),
@@ -421,9 +526,18 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
                 children: [
                   Text(_mirageTitleController.text, style: AppTypography.h2),
                   const SizedBox(height: 4),
-                  Text('${_locationController.text} • ${_mirageDurationController.text}', style: AppTypography.small),
+                  Text(
+                    '${_locationController.text} • ${_mirageDurationController.text}',
+                    style: AppTypography.small,
+                  ),
                   const Divider(height: 20),
-                  Text('Price per Guest: ₹${_miragePriceController.text}', style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.saffron)),
+                  Text(
+                    'Price per Guest: ₹${_miragePriceController.text}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.saffron,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -449,7 +563,8 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
       dancersNeeded: int.tryParse(_dancersNeededController.text) ?? 5,
       preferredDanceStyle: _selectedStyle,
       budget: double.tryParse(_budgetController.text) ?? 30000.0,
-      coverImageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
+      coverImageUrl:
+          'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
       photos: [
         'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
       ],
@@ -486,8 +601,11 @@ class _CreateEventFlowState extends State<CreateEventFlow> {
       includes: _mirageIncludesController.text.split(','),
       excludes: ['Transportation'],
       guestRules: ['Wear festive Indian ethnic attire'],
-      coverImageUrl: 'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80',
-      galleryUrls: ['https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80'],
+      coverImageUrl:
+          'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80',
+      galleryUrls: [
+        'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&auto=format&fit=crop&q=80',
+      ],
       rating: 5.0,
       reviewCount: 1,
       availableDates: ['28 Oct 2026', '15 Nov 2026'],

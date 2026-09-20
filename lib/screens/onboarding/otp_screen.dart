@@ -35,7 +35,11 @@ class _OTPScreenState extends State<OTPScreen> {
                 keyboardType: TextInputType.number,
                 maxLength: 4,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 28, letterSpacing: 12, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 28,
+                  letterSpacing: 12,
+                  fontWeight: FontWeight.bold,
+                ),
                 decoration: const InputDecoration(
                   counterText: '',
                   hintText: '••••',
@@ -48,7 +52,9 @@ class _OTPScreenState extends State<OTPScreen> {
                   onPressed: () {
                     // Navigate to main app shell after login
                     Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (_) => const MainNavigationShell()),
+                      MaterialPageRoute(
+                        builder: (_) => const MainNavigationShell(),
+                      ),
                       (route) => false,
                     );
                   },

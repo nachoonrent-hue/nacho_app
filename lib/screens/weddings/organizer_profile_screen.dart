@@ -11,9 +11,7 @@ class OrganizerProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Organizer Profile'),
-      ),
+      appBar: AppBar(title: const Text('Organizer Profile')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -41,9 +39,16 @@ class OrganizerProfileScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.location_on_outlined, size: 16, color: AppColors.secondaryText),
+                      const Icon(
+                        Icons.location_on_outlined,
+                        size: 16,
+                        color: AppColors.secondaryText,
+                      ),
                       const SizedBox(width: 4),
-                      Text(organizer.location, style: AppTypography.bodySecondary),
+                      Text(
+                        organizer.location,
+                        style: AppTypography.bodySecondary,
+                      ),
                     ],
                   ),
                 ],
@@ -64,8 +69,21 @@ class OrganizerProfileScreen extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Text('${organizer.totalEventsOrganized}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.primaryPlum)),
-                      const Text('Events Managed', style: TextStyle(fontSize: 12, color: AppColors.secondaryText)),
+                      Text(
+                        '${organizer.totalEventsOrganized}',
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryPlum,
+                        ),
+                      ),
+                      const Text(
+                        'Events Managed',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: AppColors.secondaryText,
+                        ),
+                      ),
                     ],
                   ),
                   Container(height: 30, width: 1, color: AppColors.borderLight),
@@ -73,11 +91,28 @@ class OrganizerProfileScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.star_rounded, color: AppColors.saffron, size: 18),
-                          Text('${organizer.rating}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.primaryPlum)),
+                          const Icon(
+                            Icons.star_rounded,
+                            color: AppColors.saffron,
+                            size: 18,
+                          ),
+                          Text(
+                            '${organizer.rating}',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.primaryPlum,
+                            ),
+                          ),
                         ],
                       ),
-                      Text('(${organizer.reviewCount} Reviews)', style: const TextStyle(fontSize: 12, color: AppColors.secondaryText)),
+                      Text(
+                        '(${organizer.reviewCount} Reviews)',
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: AppColors.secondaryText,
+                        ),
+                      ),
                     ],
                   ),
                 ],

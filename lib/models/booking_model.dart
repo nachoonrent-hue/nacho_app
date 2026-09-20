@@ -8,7 +8,7 @@ enum BookingStatus {
   checkedIn,
   completed,
   cancelled,
-  disputed
+  disputed,
 }
 
 class BookingModel {

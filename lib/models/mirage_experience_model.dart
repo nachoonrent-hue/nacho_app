@@ -1,7 +1,8 @@
 class MirageExperienceModel {
   final String id;
   final String title;
-  final String category; // Baraat, Sangeet, Mehndi, Haldi, Traditional Food, Traditional Dress, Cultural Ceremony
+  final String
+  category; // Baraat, Sangeet, Mehndi, Haldi, Traditional Food, Traditional Dress, Cultural Ceremony
   final String description;
   final String location;
   final String duration;

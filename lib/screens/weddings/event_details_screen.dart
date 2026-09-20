@@ -26,12 +26,19 @@ class EventDetailsScreen extends StatelessWidget {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Image.network(
-                    event.coverImageUrl,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
-                      color: AppColors.chipBackground,
-                      child: const Icon(Icons.celebration, size: 64, color: AppColors.primaryPlum),
+                  Hero(
+                    tag: 'event-cover-${event.id}',
+                    child: Image.network(
+                      event.coverImageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        color: AppColors.chipBackground,
+                        child: const Icon(
+                          Icons.celebration,
+                          size: 64,
+                          color: AppColors.primaryPlum,
+                        ),
+                      ),
                     ),
                   ),
                   Container(
@@ -56,20 +63,31 @@ class EventDetailsScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: AppColors.saffron,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
                             event.weddingType,
-                            style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 6),
                         Text(
                           event.title,
-                          style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -80,7 +98,9 @@ class EventDetailsScreen extends StatelessWidget {
             actions: [
               IconButton(
                 icon: Icon(
-                  isSaved ? Icons.bookmark_rounded : Icons.bookmark_border_rounded,
+                  isSaved
+                      ? Icons.bookmark_rounded
+                      : Icons.bookmark_border_rounded,
                   color: isSaved ? AppColors.saffron : Colors.white,
                 ),
                 onPressed: () {
@@ -101,7 +121,11 @@ class EventDetailsScreen extends StatelessWidget {
                       StatusBadge(status: event.status),
                       Text(
                         'Budget: ₹${event.budget.toInt()}',
-                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.emeraldSuccess),
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.emeraldSuccess,
+                        ),
                       ),
                     ],
                   ),
@@ -117,13 +141,29 @@ class EventDetailsScreen extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        _DetailRow(icon: Icons.calendar_today_rounded, label: 'Date & Time', value: '${event.date} at ${event.time}'),
+                        _DetailRow(
+                          icon: Icons.calendar_today_rounded,
+                          label: 'Date & Time',
+                          value: '${event.date} at ${event.time}',
+                        ),
                         const Divider(height: 20),
-                        _DetailRow(icon: Icons.location_on_outlined, label: 'Venue Location', value: event.location),
+                        _DetailRow(
+                          icon: Icons.location_on_outlined,
+                          label: 'Venue Location',
+                          value: event.location,
+                        ),
                         const Divider(height: 20),
-                        _DetailRow(icon: Icons.groups_rounded, label: 'Expected Crowd', value: '${event.expectedCrowd} Guests'),
+                        _DetailRow(
+                          icon: Icons.groups_rounded,
+                          label: 'Expected Crowd',
+                          value: '${event.expectedCrowd} Guests',
+                        ),
                         const Divider(height: 20),
-                        _DetailRow(icon: Icons.timer_outlined, label: 'Performance Duration', value: event.performanceDuration),
+                        _DetailRow(
+                          icon: Icons.timer_outlined,
+                          label: 'Performance Duration',
+                          value: event.performanceDuration,
+                        ),
                       ],
                     ),
                   ),
@@ -140,7 +180,10 @@ class EventDetailsScreen extends StatelessWidget {
                         orElse: () => appState.organizers.first,
                       );
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => OrganizerProfileScreen(organizer: organizer)),
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              OrganizerProfileScreen(organizer: organizer),
+                        ),
                       );
                     },
                     borderRadius: BorderRadius.circular(12),
@@ -154,19 +197,37 @@ class EventDetailsScreen extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             radius: 24,
-                            backgroundImage: NetworkImage(event.organizerAvatar),
+                            backgroundImage: NetworkImage(
+                              event.organizerAvatar,
+                            ),
                           ),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(event.organizerName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-                                const Text('Verified Wedding Organizer', style: TextStyle(fontSize: 12, color: AppColors.secondaryText)),
+                                Text(
+                                  event.organizerName,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                const Text(
+                                  'Verified Wedding Organizer',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: AppColors.secondaryText,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                          const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: AppColors.primaryPlum),
+                          const Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            size: 16,
+                            color: AppColors.primaryPlum,
+                          ),
                         ],
                       ),
                     ),
@@ -183,23 +244,35 @@ class EventDetailsScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.warmIvory,
                       borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppColors.primaryPlum.withValues(alpha: 0.2)),
+                      border: Border.all(
+                        color: AppColors.primaryPlum.withValues(alpha: 0.2),
+                      ),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            const Icon(Icons.music_note_rounded, color: AppColors.primaryPlum),
+                            const Icon(
+                              Icons.music_note_rounded,
+                              color: AppColors.primaryPlum,
+                            ),
                             const SizedBox(width: 8),
                             Text(
                               '${event.dancersNeeded} ${event.preferredDanceStyle} Dancers Required',
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: AppColors.primaryPlum),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: AppColors.primaryPlum,
+                              ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 8),
-                        Text(event.dancerRequirements, style: AppTypography.body),
+                        Text(
+                          event.dancerRequirements,
+                          style: AppTypography.body,
+                        ),
                       ],
                     ),
                   ),
@@ -214,7 +287,10 @@ class EventDetailsScreen extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Cancellation Policy
-                  const Text('Cancellation & Refund Policy', style: AppTypography.h2),
+                  const Text(
+                    'Cancellation & Refund Policy',
+                    style: AppTypography.h2,
+                  ),
                   const SizedBox(height: 8),
                   Text(event.cancellationRules, style: AppTypography.small),
 
@@ -227,7 +303,9 @@ class EventDetailsScreen extends StatelessWidget {
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Booking participation request sent for "${event.title}"!'),
+                            content: Text(
+                              'Booking participation request sent for "${event.title}"!',
+                            ),
                             backgroundColor: AppColors.emeraldSuccess,
                           ),
                         );
@@ -254,7 +332,11 @@ class _DetailRow extends StatelessWidget {
   final String label;
   final String value;
 
-  const _DetailRow({required this.icon, required this.label, required this.value});
+  const _DetailRow({
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +348,10 @@ class _DetailRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(label, style: AppTypography.small),
-            Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+            Text(
+              value,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+            ),
           ],
         ),
       ],

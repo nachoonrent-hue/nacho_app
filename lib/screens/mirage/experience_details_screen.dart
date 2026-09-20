@@ -26,14 +26,20 @@ class ExperienceDetailsScreen extends StatelessWidget {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Image.network(
-                    experience.coverImageUrl,
-                    fit: BoxFit.cover,
+                  Hero(
+                    tag: 'mirage-cover-${experience.id}',
+                    child: Image.network(
+                      experience.coverImageUrl,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Colors.black.withValues(alpha: 0.3), Colors.black.withValues(alpha: 0.8)],
+                        colors: [
+                          Colors.black.withValues(alpha: 0.3),
+                          Colors.black.withValues(alpha: 0.8),
+                        ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                       ),
@@ -48,20 +54,31 @@ class ExperienceDetailsScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: AppColors.saffron,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(
                             experience.category,
-                            style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 6),
                         Text(
                           experience.title,
-                          style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -72,7 +89,9 @@ class ExperienceDetailsScreen extends StatelessWidget {
             actions: [
               IconButton(
                 icon: Icon(
-                  isSaved ? Icons.bookmark_rounded : Icons.bookmark_border_rounded,
+                  isSaved
+                      ? Icons.bookmark_rounded
+                      : Icons.bookmark_border_rounded,
                   color: isSaved ? AppColors.saffron : Colors.white,
                 ),
                 onPressed: () => appState.toggleSaveExperience(experience.id),
@@ -97,11 +116,24 @@ class ExperienceDetailsScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _MetaItem(icon: Icons.timer_outlined, title: 'Duration', subtitle: experience.duration),
+                        _MetaItem(
+                          icon: Icons.timer_outlined,
+                          title: 'Duration',
+                          subtitle: experience.duration,
+                        ),
                         _divider(),
-                        _MetaItem(icon: Icons.star_rounded, title: 'Rating', subtitle: '${experience.rating} (${experience.reviewCount})'),
+                        _MetaItem(
+                          icon: Icons.star_rounded,
+                          title: 'Rating',
+                          subtitle:
+                              '${experience.rating} (${experience.reviewCount})',
+                        ),
                         _divider(),
-                        _MetaItem(icon: Icons.location_on_outlined, title: 'Location', subtitle: experience.location),
+                        _MetaItem(
+                          icon: Icons.location_on_outlined,
+                          title: 'Location',
+                          subtitle: experience.location,
+                        ),
                       ],
                     ),
                   ),
@@ -121,8 +153,20 @@ class ExperienceDetailsScreen extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(experience.hostName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                          const Text('Verified Cultural Host', style: TextStyle(fontSize: 12, color: AppColors.secondaryText)),
+                          Text(
+                            experience.hostName,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const Text(
+                            'Verified Cultural Host',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: AppColors.secondaryText,
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -140,16 +184,27 @@ class ExperienceDetailsScreen extends StatelessWidget {
                   // What's Included
                   const Text("What's Included", style: AppTypography.h2),
                   const SizedBox(height: 10),
-                  ...experience.includes.map((inc) => Padding(
-                        padding: const EdgeInsets.only(bottom: 6.0),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.check_circle_rounded, color: AppColors.emeraldSuccess, size: 18),
-                            const SizedBox(width: 8),
-                            Expanded(child: Text(inc, style: AppTypography.bodySecondary)),
-                          ],
-                        ),
-                      )),
+                  ...experience.includes.map(
+                    (inc) => Padding(
+                      padding: const EdgeInsets.only(bottom: 6.0),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.check_circle_rounded,
+                            color: AppColors.emeraldSuccess,
+                            size: 18,
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              inc,
+                              style: AppTypography.bodySecondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
 
                   const SizedBox(height: 24),
 
@@ -162,7 +217,10 @@ class ExperienceDetailsScreen extends StatelessWidget {
                       return Chip(
                         label: Text(d),
                         backgroundColor: AppColors.chipBackground,
-                        labelStyle: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.primaryPlum),
+                        labelStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryPlum,
+                        ),
                       );
                     }).toList(),
                   ),
@@ -183,10 +241,17 @@ class ExperienceDetailsScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text('Price per Guest', style: AppTypography.small),
+                            const Text(
+                              'Price per Guest',
+                              style: AppTypography.small,
+                            ),
                             Text(
                               '₹${experience.pricePerGuest.toInt()}',
-                              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: AppColors.primaryPlum),
+                              style: const TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.primaryPlum,
+                              ),
                             ),
                           ],
                         ),
@@ -207,7 +272,8 @@ class ExperienceDetailsScreen extends StatelessWidget {
                               time: '05:00 PM',
                               totalAmount: experience.pricePerGuest,
                               status: BookingStatus.paymentPending,
-                              qrCode: 'NCH-MRG-${DateTime.now().millisecondsSinceEpoch}',
+                              qrCode:
+                                  'NCH-MRG-${DateTime.now().millisecondsSinceEpoch}',
                               createdAt: '2026-09-19',
                             );
 
@@ -215,13 +281,17 @@ class ExperienceDetailsScreen extends StatelessWidget {
 
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (_) => PaymentScreen(booking: newBooking),
+                                builder: (_) =>
+                                    PaymentScreen(booking: newBooking),
                               ),
                             );
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.saffron,
-                            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 24,
+                              vertical: 14,
+                            ),
                           ),
                           child: const Text('BOOK EXPERIENCE'),
                         ),
@@ -239,7 +309,8 @@ class ExperienceDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _divider() => Container(height: 30, width: 1, color: AppColors.borderLight);
+  Widget _divider() =>
+      Container(height: 30, width: 1, color: AppColors.borderLight);
 }
 
 class _MetaItem extends StatelessWidget {
@@ -247,7 +318,11 @@ class _MetaItem extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const _MetaItem({required this.icon, required this.title, required this.subtitle});
+  const _MetaItem({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -256,7 +331,10 @@ class _MetaItem extends StatelessWidget {
         Icon(icon, color: AppColors.primaryPlum, size: 20),
         const SizedBox(height: 4),
         Text(title, style: AppTypography.small),
-        Text(subtitle, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+        Text(
+          subtitle,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+        ),
       ],
     );
   }

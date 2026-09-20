@@ -17,7 +17,9 @@ class BookingRequestScreen extends StatefulWidget {
 class _BookingRequestScreenState extends State<BookingRequestScreen> {
   final _dateController = TextEditingController(text: '28 Oct 2026');
   final _timeController = TextEditingController(text: '06:30 PM');
-  final _notesController = TextEditingController(text: 'Baraat procession performance with live Dhol drums.');
+  final _notesController = TextEditingController(
+    text: 'Baraat procession performance with live Dhol drums.',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,13 @@ class _BookingRequestScreenState extends State<BookingRequestScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(widget.dancer.name, style: AppTypography.h3),
-                      Text('Starting from ₹${widget.dancer.startingPrice.toInt()}', style: const TextStyle(color: AppColors.primaryPlum, fontWeight: FontWeight.bold)),
+                      Text(
+                        'Starting from ₹${widget.dancer.startingPrice.toInt()}',
+                        style: const TextStyle(
+                          color: AppColors.primaryPlum,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -55,7 +63,10 @@ class _BookingRequestScreenState extends State<BookingRequestScreen> {
               controller: _dateController,
               decoration: const InputDecoration(
                 labelText: 'Event Date',
-                prefixIcon: Icon(Icons.calendar_today_rounded, color: AppColors.primaryPlum),
+                prefixIcon: Icon(
+                  Icons.calendar_today_rounded,
+                  color: AppColors.primaryPlum,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -63,7 +74,10 @@ class _BookingRequestScreenState extends State<BookingRequestScreen> {
               controller: _timeController,
               decoration: const InputDecoration(
                 labelText: 'Performance Start Time',
-                prefixIcon: Icon(Icons.access_time_rounded, color: AppColors.primaryPlum),
+                prefixIcon: Icon(
+                  Icons.access_time_rounded,
+                  color: AppColors.primaryPlum,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -90,7 +104,10 @@ class _BookingRequestScreenState extends State<BookingRequestScreen> {
                   Expanded(
                     child: Text(
                       'Nachoonrent Protected Payment Guarantee ensures funds are securely held until event completion.',
-                      style: TextStyle(fontSize: 12, color: AppColors.primaryPlum),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.primaryPlum,
+                      ),
                     ),
                   ),
                 ],
@@ -127,7 +144,8 @@ class _BookingRequestScreenState extends State<BookingRequestScreen> {
       date: _dateController.text,
       time: _timeController.text,
       totalAmount: widget.dancer.startingPrice,
-      status: BookingStatus.accepted, // Instantly accepted in demo flow to trigger payment
+      status: BookingStatus
+          .accepted, // Instantly accepted in demo flow to trigger payment
       qrCode: 'NCH-DNC-${DateTime.now().millisecondsSinceEpoch}',
       specialNotes: _notesController.text,
       createdAt: '2026-09-19',
@@ -136,9 +154,7 @@ class _BookingRequestScreenState extends State<BookingRequestScreen> {
     appState.createBooking(booking);
 
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (_) => PaymentScreen(booking: booking),
-      ),
+      MaterialPageRoute(builder: (_) => PaymentScreen(booking: booking)),
     );
   }
 }

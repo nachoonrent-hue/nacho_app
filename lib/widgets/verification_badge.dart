@@ -13,11 +13,7 @@ class VerificationBadge extends StatelessWidget {
         color: AppColors.saffron,
         shape: BoxShape.circle,
       ),
-      child: Icon(
-        Icons.check_rounded,
-        color: Colors.white,
-        size: size - 4,
-      ),
+      child: Icon(Icons.check_rounded, color: Colors.white, size: size - 4),
     );
   }
 }

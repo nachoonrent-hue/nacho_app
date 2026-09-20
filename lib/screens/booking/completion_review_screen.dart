@@ -15,7 +15,10 @@ class CompletionReviewScreen extends StatefulWidget {
 
 class _CompletionReviewScreenState extends State<CompletionReviewScreen> {
   double _rating = 5.0;
-  final _commentController = TextEditingController(text: 'Phenomenal performance! Arrived on time and amazed all wedding guests with high-energy Bhangra routines!');
+  final _commentController = TextEditingController(
+    text:
+        'Phenomenal performance! Arrived on time and amazed all wedding guests with high-energy Bhangra routines!',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,9 @@ class _CompletionReviewScreenState extends State<CompletionReviewScreen> {
                 return IconButton(
                   iconSize: 36,
                   icon: Icon(
-                    starValue <= _rating ? Icons.star_rounded : Icons.star_border_rounded,
+                    starValue <= _rating
+                        ? Icons.star_rounded
+                        : Icons.star_border_rounded,
                     color: AppColors.saffron,
                   ),
                   onPressed: () {

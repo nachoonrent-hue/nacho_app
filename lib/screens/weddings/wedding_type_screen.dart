@@ -12,7 +12,13 @@ class WeddingTypeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appState = context.appState;
-    final categoryEvents = appState.weddingEvents.where((e) => e.weddingType.toLowerCase().contains(weddingTypeName.toLowerCase().split(' ')[0])).toList();
+    final categoryEvents = appState.weddingEvents
+        .where(
+          (e) => e.weddingType.toLowerCase().contains(
+            weddingTypeName.toLowerCase().split(' ')[0],
+          ),
+        )
+        .toList();
 
     return Scaffold(
       body: CustomScrollView(
@@ -22,7 +28,13 @@ class WeddingTypeScreen extends StatelessWidget {
             pinned: true,
             backgroundColor: AppColors.primaryPlum,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(weddingTypeName, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              title: Text(
+                weddingTypeName,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               background: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -30,9 +42,7 @@ class WeddingTypeScreen extends StatelessWidget {
                     'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
                     fit: BoxFit.cover,
                   ),
-                  Container(
-                    color: Colors.black.withValues(alpha: 0.5),
-                  ),
+                  Container(color: Colors.black.withValues(alpha: 0.5)),
                 ],
               ),
             ),
@@ -43,7 +53,10 @@ class WeddingTypeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Cultural Heritage & Celebrations', style: AppTypography.h2),
+                  const Text(
+                    'Cultural Heritage & Celebrations',
+                    style: AppTypography.h2,
+                  ),
                   const SizedBox(height: 8),
                   Text(
                     '$weddingTypeName celebrations are renowned worldwide for rich music, grand Baraat entries, traditional dances like Bhangra and Giddha, and festive family hospitality.',
@@ -53,15 +66,28 @@ class WeddingTypeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Upcoming $weddingTypeName Events', style: AppTypography.h2),
-                      Text('${categoryEvents.length} Active', style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.saffron)),
+                      Text(
+                        'Upcoming $weddingTypeName Events',
+                        style: AppTypography.h2,
+                      ),
+                      Text(
+                        '${categoryEvents.length} Active',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.saffron,
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 12),
                   if (categoryEvents.isEmpty)
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 32),
-                      child: Center(child: Text('No upcoming events listed yet for this category.')),
+                      child: Center(
+                        child: Text(
+                          'No upcoming events listed yet for this category.',
+                        ),
+                      ),
                     )
                   else
                     ListView.builder(
@@ -76,7 +102,8 @@ class WeddingTypeScreen extends StatelessWidget {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (_) => EventDetailsScreen(event: event),
+                                builder: (_) =>
+                                    EventDetailsScreen(event: event),
                               ),
                             );
                           },

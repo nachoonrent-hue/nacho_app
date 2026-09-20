@@ -22,10 +22,7 @@ class MainNavigationShell extends StatelessWidget {
     final currentIndex = appState.currentNavIndex;
 
     return Scaffold(
-      body: IndexedStack(
-        index: currentIndex,
-        children: _screens,
-      ),
+      body: IndexedStack(index: currentIndex, children: _screens),
       bottomNavigationBar: CustomBottomNav(
         currentIndex: currentIndex,
         onTap: (index) {

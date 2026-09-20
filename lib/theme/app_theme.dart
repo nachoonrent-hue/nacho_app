@@ -1,5 +1,46 @@
 import 'package:flutter/material.dart';
 
+/// Motion constants shared across the app for a consistent feel.
+class AppMotion {
+  static const Duration fast = Duration(milliseconds: 180);
+  static const Duration medium = Duration(milliseconds: 320);
+  static const Duration slow = Duration(milliseconds: 560);
+
+  static const Curve entrance = Curves.easeOutCubic;
+  static const Curve spring = Curves.easeOutBack;
+  static const Curve pop = Curves.elasticOut;
+}
+
+/// Global page-transition so every screen push feels smooth & cohesive.
+class FadeSlidePageTransitionsBuilder extends PageTransitionsBuilder {
+  const FadeSlidePageTransitionsBuilder();
+
+  @override
+  Widget buildTransitions<T>(
+    PageRoute<T> route,
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    final curved = CurvedAnimation(
+      parent: animation,
+      curve: Curves.easeOutCubic,
+      reverseCurve: Curves.easeInCubic,
+    );
+    return FadeTransition(
+      opacity: curved,
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(0, 0.035),
+          end: Offset.zero,
+        ).animate(curved),
+        child: child,
+      ),
+    );
+  }
+}
+
 class AppColors {
   static const Color primaryPlum = Color(0xFF4B164C);
   static const Color saffron = Color(0xFFE58A24);
@@ -73,6 +114,7 @@ class AppTheme {
       useMaterial3: true,
       scaffoldBackgroundColor: AppColors.warmIvory,
       primaryColor: AppColors.primaryPlum,
+      splashFactory: InkSparkle.splashFactory,
       colorScheme: ColorScheme.light(
         primary: AppColors.primaryPlum,
         secondary: AppColors.saffron,
@@ -81,6 +123,16 @@ class AppTheme {
         onPrimary: Colors.white,
         onSecondary: Colors.white,
         onSurface: AppColors.charcoal,
+      ),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: <TargetPlatform, PageTransitionsBuilder>{
+          TargetPlatform.android: FadeSlidePageTransitionsBuilder(),
+          TargetPlatform.iOS: FadeSlidePageTransitionsBuilder(),
+          TargetPlatform.macOS: FadeSlidePageTransitionsBuilder(),
+          TargetPlatform.windows: FadeSlidePageTransitionsBuilder(),
+          TargetPlatform.linux: FadeSlidePageTransitionsBuilder(),
+          TargetPlatform.fuchsia: FadeSlidePageTransitionsBuilder(),
+        },
       ),
       fontFamily: 'Roboto',
       appBarTheme: const AppBarTheme(
@@ -122,13 +174,18 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
           ),
-          textStyle: AppTypography.button.copyWith(color: AppColors.primaryPlum),
+          textStyle: AppTypography.button.copyWith(
+            color: AppColors.primaryPlum,
+          ),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: const BorderSide(color: AppColors.borderLight),
@@ -139,7 +196,10 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: const BorderSide(color: AppColors.primaryPlum, width: 1.5),
+          borderSide: const BorderSide(
+            color: AppColors.primaryPlum,
+            width: 1.5,
+          ),
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -148,6 +208,39 @@ class AppTheme {
         unselectedItemColor: AppColors.secondaryText,
         type: BottomNavigationBarType.fixed,
         elevation: 12,
+      ),
+      tabBarTheme: TabBarThemeData(
+        labelColor: AppColors.primaryPlum,
+        unselectedLabelColor: AppColors.secondaryText,
+        indicatorColor: AppColors.primaryPlum,
+        dividerColor: Colors.transparent,
+        overlayColor: const WidgetStatePropertyAll(AppColors.primaryPlum),
+        labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+        unselectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.normal,
+          fontSize: 13,
+        ),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      ),
+      bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+      ),
+      dividerTheme: const DividerThemeData(
+        color: AppColors.borderLight,
+        thickness: 1,
+        space: 1,
+      ),
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: AppColors.saffron,
+        linearTrackColor: Color(0x33FFFFFF),
+        circularTrackColor: Color(0x33FFFFFF),
       ),
     );
   }

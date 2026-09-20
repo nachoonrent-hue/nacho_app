@@ -7,23 +7,44 @@ class CreateDancerProfileFlow extends StatefulWidget {
   const CreateDancerProfileFlow({super.key});
 
   @override
-  State<CreateDancerProfileFlow> createState() => _CreateDancerProfileFlowState();
+  State<CreateDancerProfileFlow> createState() =>
+      _CreateDancerProfileFlowState();
 }
 
 class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
   int _currentStep = 0;
 
-  final _nameController = TextEditingController(text: 'Sher-E-Punjab Bhangra Squad');
-  final _locationController = TextEditingController(text: 'Amritsar & Chandigarh');
-  final _aboutController = TextEditingController(text: 'High octane authentic Bhangra group specializing in Baraat processions and pre-wedding celebrations.');
+  final _nameController = TextEditingController(
+    text: 'Sher-E-Punjab Bhangra Squad',
+  );
+  final _locationController = TextEditingController(
+    text: 'Amritsar & Chandigarh',
+  );
+  final _aboutController = TextEditingController(
+    text:
+        'High octane authentic Bhangra group specializing in Baraat processions and pre-wedding celebrations.',
+  );
   final _experienceController = TextEditingController(text: '7 Years');
   final _priceController = TextEditingController(text: '28000');
-  final _performanceDetailsController = TextEditingController(text: 'Includes 8 dancers + 2 Dhol masters with authentic Punjabi dress.');
+  final _performanceDetailsController = TextEditingController(
+    text: 'Includes 8 dancers + 2 Dhol masters with authentic Punjabi dress.',
+  );
   final _instagramController = TextEditingController(text: '@bhangra_squad');
-  final _youtubeController = TextEditingController(text: 'BhangraSquadOfficial');
+  final _youtubeController = TextEditingController(
+    text: 'BhangraSquadOfficial',
+  );
 
   final List<String> _selectedStyles = ['Bhangra', 'Punjabi Folk'];
-  final List<String> _availableStyles = ['Bhangra', 'Bollywood', 'Rajasthani', 'Gujarati', 'Kathak', 'Giddha', 'Folk', 'Contemporary'];
+  final List<String> _availableStyles = [
+    'Bhangra',
+    'Bollywood',
+    'Rajasthani',
+    'Gujarati',
+    'Kathak',
+    'Giddha',
+    'Folk',
+    'Contemporary',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +56,9 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
           child: LinearProgressIndicator(
             value: (_currentStep + 1) / 5,
             backgroundColor: AppColors.borderLight,
-            valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primaryPlum),
+            valueColor: const AlwaysStoppedAnimation<Color>(
+              AppColors.primaryPlum,
+            ),
           ),
         ),
       ),
@@ -71,7 +94,9 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
                       _publishProfile();
                     }
                   },
-                  child: Text(_currentStep == 4 ? 'Publish Profile' : 'Next Step'),
+                  child: Text(
+                    _currentStep == 4 ? 'Publish Profile' : 'Next Step',
+                  ),
                 ),
               ),
             ],
@@ -89,13 +114,19 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
           children: [
             const Text('Step 1: Basic Information', style: AppTypography.h1),
             const SizedBox(height: 8),
-            const Text('Set up your stage / troupe name and location.', style: AppTypography.bodySecondary),
+            const Text(
+              'Set up your stage / troupe name and location.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             TextField(
               controller: _nameController,
               decoration: const InputDecoration(
                 labelText: 'Dancer / Troupe Name',
-                prefixIcon: Icon(Icons.person_outline, color: AppColors.primaryPlum),
+                prefixIcon: Icon(
+                  Icons.person_outline,
+                  color: AppColors.primaryPlum,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -103,7 +134,10 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
               controller: _locationController,
               decoration: const InputDecoration(
                 labelText: 'Primary Location / City',
-                prefixIcon: Icon(Icons.location_on_outlined, color: AppColors.primaryPlum),
+                prefixIcon: Icon(
+                  Icons.location_on_outlined,
+                  color: AppColors.primaryPlum,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -111,7 +145,10 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
               controller: _experienceController,
               decoration: const InputDecoration(
                 labelText: 'Years of Experience',
-                prefixIcon: Icon(Icons.stars_outlined, color: AppColors.primaryPlum),
+                prefixIcon: Icon(
+                  Icons.stars_outlined,
+                  color: AppColors.primaryPlum,
+                ),
               ),
             ),
           ],
@@ -122,7 +159,10 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
           children: [
             const Text('Step 2: Dance Styles', style: AppTypography.h1),
             const SizedBox(height: 8),
-            const Text('Select all the dance forms you specialize in.', style: AppTypography.bodySecondary),
+            const Text(
+              'Select all the dance forms you specialize in.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 20),
             Wrap(
               spacing: 10,
@@ -155,16 +195,25 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Step 3: Pricing & Performance', style: AppTypography.h1),
+            const Text(
+              'Step 3: Pricing & Performance',
+              style: AppTypography.h1,
+            ),
             const SizedBox(height: 8),
-            const Text('Set your starting rate and performance setup details.', style: AppTypography.bodySecondary),
+            const Text(
+              'Set your starting rate and performance setup details.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             TextField(
               controller: _priceController,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 labelText: 'Starting Price (in INR ₹)',
-                prefixIcon: Icon(Icons.currency_rupee, color: AppColors.primaryPlum),
+                prefixIcon: Icon(
+                  Icons.currency_rupee,
+                  color: AppColors.primaryPlum,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -172,7 +221,8 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
               controller: _performanceDetailsController,
               maxLines: 3,
               decoration: const InputDecoration(
-                labelText: 'Performance Package Details (Group size, duration, props)',
+                labelText:
+                    'Performance Package Details (Group size, duration, props)',
               ),
             ),
           ],
@@ -181,9 +231,15 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Step 4: Biography & Social Media', style: AppTypography.h1),
+            const Text(
+              'Step 4: Biography & Social Media',
+              style: AppTypography.h1,
+            ),
             const SizedBox(height: 8),
-            const Text('Tell organizers about your work and share social handles.', style: AppTypography.bodySecondary),
+            const Text(
+              'Tell organizers about your work and share social handles.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             TextField(
               controller: _aboutController,
@@ -197,7 +253,10 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
               controller: _instagramController,
               decoration: const InputDecoration(
                 labelText: 'Instagram Handle',
-                prefixIcon: Icon(Icons.camera_alt_outlined, color: AppColors.primaryPlum),
+                prefixIcon: Icon(
+                  Icons.camera_alt_outlined,
+                  color: AppColors.primaryPlum,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -205,7 +264,10 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
               controller: _youtubeController,
               decoration: const InputDecoration(
                 labelText: 'YouTube Channel',
-                prefixIcon: Icon(Icons.video_library_outlined, color: AppColors.primaryPlum),
+                prefixIcon: Icon(
+                  Icons.video_library_outlined,
+                  color: AppColors.primaryPlum,
+                ),
               ),
             ),
           ],
@@ -217,7 +279,10 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
           children: [
             const Text('Step 5: Profile Preview', style: AppTypography.h1),
             const SizedBox(height: 8),
-            const Text('Review your profile before publishing to the public marketplace.', style: AppTypography.bodySecondary),
+            const Text(
+              'Review your profile before publishing to the public marketplace.',
+              style: AppTypography.bodySecondary,
+            ),
             const SizedBox(height: 24),
             Container(
               padding: const EdgeInsets.all(16),
@@ -233,9 +298,18 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
                   const SizedBox(height: 4),
                   Text(_locationController.text, style: AppTypography.small),
                   const Divider(height: 20),
-                  Text('Starting Price: ₹${_priceController.text}', style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.primaryPlum)),
+                  Text(
+                    'Starting Price: ₹${_priceController.text}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primaryPlum,
+                    ),
+                  ),
                   const SizedBox(height: 8),
-                  Text(_aboutController.text, style: AppTypography.bodySecondary),
+                  Text(
+                    _aboutController.text,
+                    style: AppTypography.bodySecondary,
+                  ),
                 ],
               ),
             ),
@@ -249,8 +323,10 @@ class _CreateDancerProfileFlowState extends State<CreateDancerProfileFlow> {
       id: 'dnc_${DateTime.now().millisecondsSinceEpoch}',
       userId: context.appState.currentUser.id,
       name: _nameController.text,
-      avatarUrl: 'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=400&auto=format&fit=crop&q=80',
-      coverVideoThumbnail: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80',
+      avatarUrl:
+          'https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=400&auto=format&fit=crop&q=80',
+      coverVideoThumbnail:
+          'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80',
       videoUrls: ['https://example.com/demo.mp4'],
       photoGallery: [
         'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80',

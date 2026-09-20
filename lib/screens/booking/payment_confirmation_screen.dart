@@ -56,7 +56,15 @@ class PaymentConfirmationScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    const Text('EVENT ENTRY / CHECK-IN PASS', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, letterSpacing: 1.0, color: AppColors.secondaryText)),
+                    const Text(
+                      'EVENT ENTRY / CHECK-IN PASS',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.0,
+                        color: AppColors.secondaryText,
+                      ),
+                    ),
                     const SizedBox(height: 12),
 
                     // QR Code Box Placeholder / Simulation
@@ -66,13 +74,26 @@ class PaymentConfirmationScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: AppColors.warmIvory,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: AppColors.primaryPlum, width: 2),
+                        border: Border.all(
+                          color: AppColors.primaryPlum,
+                          width: 2,
+                        ),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Icons.qr_code_2_rounded, size: 100, color: AppColors.primaryPlum),
-                          Text(booking.qrCode, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                          const Icon(
+                            Icons.qr_code_2_rounded,
+                            size: 100,
+                            color: AppColors.primaryPlum,
+                          ),
+                          Text(
+                            booking.qrCode,
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ],
                       ),
                     ),
